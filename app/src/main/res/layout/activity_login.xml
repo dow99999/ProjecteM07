@@ -10,9 +10,9 @@
         android:id="@+id/tvUsers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
-        android:text="TextView"
+        android:text="@string/usuario"
+        app:layout_constraintEnd_toStartOf="@+id/etUser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,9 +20,9 @@
         android:id="@+id/tvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="44dp"
-        android:text="TextView"
+        android:text="@string/contrase_a"
+        app:layout_constraintEnd_toStartOf="@+id/etPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsers" />
 
@@ -33,7 +33,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:onClick="handleLogin"
-        android:text="Button"
+        android:text="@string/login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
 
@@ -41,24 +41,24 @@
         android:id="@+id/etUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
+        android:hint="@string/escribe_tu_usuario"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintStart_toEndOf="@+id/tvUsers"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
+        android:hint="@string/escrtibe_tu_contrase_a"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintStart_toEndOf="@+id/tvPassword"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUser" />
 
     <Button
@@ -69,7 +69,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:onClick="handleRegister"
-        android:text="Button"
+        android:text="@string/registrarse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
