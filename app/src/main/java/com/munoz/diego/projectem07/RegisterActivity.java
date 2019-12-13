@@ -41,15 +41,25 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void handleCrearUsuario (View view){
-        String nombre, usuario, email, passw1, passw2;
+        String nombre = m_Nombre.getText().toString();
+        String usuario = m_Usuario.getText().toString();
+        String email = m_Email.getText().toString();
+        String paswd1 = m_Contrasena.getText().toString();
+        String paswd2 = m_Contrasena2.getText().toString();
 
         SharedPreferences user_info= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = user_info.edit();
-        editor.putInt()
+        SharedPreferences.Editor editor = sharedPref.edit();
 
+        editor.putString("nombre", nombre);
+        editor.putString("user", usuario);
+        editor.putString("email", email);
+        if(paswd1 == paswd2){
+            editor.putString("pass", paswd1);
+            editor.putString("pass2", paswd2);
+        } else{
+            Toast.makeText(this, "Las contraseñs no coinciden", Toast.LENGTH_SHORT).show();
+        }
+        }
 
-
-
-        Toast.makeText(this, "ELISABHETÁÁ", Toast.LENGTH_SHORT).show();
     }
-}
+
