@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (!paswd1.equals(paswd2)) {
             Toast.makeText(this, "Las contraseñas no coinciden.", Toast.LENGTH_SHORT).show();
-        } else if (nombre.equals("") || usuario.equals("") || email.equals("")) {
+        } else if (nombre.equals("") || usuario.equals("") || email.equals("") || paswd1.equals("")) {
             Toast.makeText(this, "Debes rellenar todos los campos.", Toast.LENGTH_LONG).show();
         } else {
             editor.putString("nombre", nombre);
