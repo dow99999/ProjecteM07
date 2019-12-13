@@ -1,6 +1,6 @@
 package com.munoz.diego.projectem07;
 
-import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -29,30 +29,40 @@ public class RegisterActivity extends AppCompatActivity {
         m_Email = findViewById(R.id.etEmail);
         m_Contrasena = findViewById(R.id.etContrasena);
         m_Contrasena2 = findViewById(R.id.etContrasena2);
-        
 
     }
 
-    public void handleCrearUsuario (View view){
+    public void handleCrearUsuario(View view) {
+        boolean esBien = true;
         String nombre = m_Nombre.getText().toString();
         String usuario = m_Usuario.getText().toString();
         String email = m_Email.getText().toString();
         String paswd1 = m_Contrasena.getText().toString();
         String paswd2 = m_Contrasena2.getText().toString();
 
-        SharedPreferences user_info= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences user_info = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = user_info.edit();
 
-        editor.putString("nombre", nombre);
-        editor.putString("user", usuario);
-        editor.putString("email", email);
-        if(paswd1 == paswd2){
+
+        if (!paswd1.equals(paswd2)) {
+            Toast.makeText(this, "Las contraseñas no coinciden.", Toast.LENGTH_SHORT).show();
+        } else if (nombre.equals("") || usuario.equals("") || email.equals("")) {
+            Toast.makeText(this, "Debes rellenar todos los campos.", Toast.LENGTH_LONG).show();
+        } else {
+            editor.putString("nombre", nombre);
+            editor.putString("user", usuario);
+            editor.putString("email", email);
             editor.putString("pass", paswd1);
-            editor.putString("pass2", paswd2);
-        } else{
-            Toast.makeText(this, "Las contraseñs no coinciden", Toast.LENGTH_SHORT).show();
-        }
+            editor.apply();
+
+            Toast.makeText(this, "USUARIO CREADO", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
         }
 
+
     }
+
+
+}
 
