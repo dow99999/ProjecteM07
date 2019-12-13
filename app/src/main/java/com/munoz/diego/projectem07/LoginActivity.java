@@ -38,13 +38,16 @@ public class LoginActivity extends AppCompatActivity {
         user = user_info.getString("user", "++--");
         password = user_info.getString("pass", "--++");
 
-        if(m_user.getText().toString().equals(user) &&
-                m_pass.getText().toString().equals(password)) {
+        if(m_user.getText().toString().equals(user)) {
+            if(m_pass.getText().toString().equals(password)){
            Intent intent = new Intent(this, MainActivity.class);
            intent.putExtra("user", m_user.getText().toString());
            startActivity(intent);
+            } else{
+                Toast.makeText(this, "Password inválida.", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            Toast.makeText(this, "Usuario invalido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Usuario inválido.", Toast.LENGTH_SHORT).show();
         }
     }
 }
