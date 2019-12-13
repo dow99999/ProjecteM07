@@ -17,7 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText m_Email;
     private EditText m_Contrasena;
     private EditText m_Contrasena2;
-    private SharedPreferences sharedPref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
         m_Email = findViewById(R.id.etEmail);
         m_Contrasena = findViewById(R.id.etContrasena);
         m_Contrasena2 = findViewById(R.id.etContrasena2);
-
-
-
-        Context context = this.getApplicationContext();
-
-        sharedPref = context.getSharedPreferences(
-                getString(R.string.app_name), Context.MODE_PRIVATE);
-
+        
 
     }
 
@@ -48,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         String paswd2 = m_Contrasena2.getText().toString();
 
         SharedPreferences user_info= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = sharedPref.edit();
+        SharedPreferences.Editor editor = user_info.edit();
 
         editor.putString("nombre", nombre);
         editor.putString("user", usuario);
