@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.munoz.diego.projectem07.modelo.Modelo;
+import com.munoz.diego.projectem07.modelo.Usuario;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -74,6 +78,16 @@ public class RegisterActivity extends AppCompatActivity {
             int checkedRadioButtonId = m_sexo.getCheckedRadioButtonId();
             editor.putInt("checkedRadioButtonId", checkedRadioButtonId);
             editor.apply();
+
+            Usuario auxU = new Usuario();
+
+            auxU.setNombre(nombre);
+            auxU.setUsuario(usuario);
+            auxU.setEmail(email);
+            auxU.setPass(paswd1);
+
+            Modelo.getModelo().setCurrentUser(auxU);
+            Modelo.getModelo().addUser(auxU);
 
             showToast("Usuario/a Creado");
             Intent intent = new Intent(this, LoginActivity.class);

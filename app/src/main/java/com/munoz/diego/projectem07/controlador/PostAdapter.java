@@ -1,7 +1,8 @@
 package com.munoz.diego.projectem07.controlador;
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,21 +10,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.munoz.diego.projectem07.R;
 import com.munoz.diego.projectem07.modelo.Post;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     private ArrayList<Post> m_postData;
     private Context m_context;
 
-    public PostAdapter(Context context, ArrayList<Post> gameData){
+    public PostAdapter(Context context, ArrayList<Post> postData){
         m_context = context;
-        m_postData = gameData;
+        m_postData = postData;
     }
 
     @NonNull
@@ -48,7 +54,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             implements View.OnClickListener{
 
         private TextView mTitleText;
-        private TextView mInfoText;
         private ImageView mPostImage;
 
 
@@ -56,7 +61,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             super(itemView);
 
             mTitleText = itemView.findViewById(R.id.title);
-            mPostImage = itemView.findViewById(R.id.PostImage);
+            mPostImage = itemView.findViewById(R.id.postImage);
 
             itemView.setOnClickListener(this);
         }
@@ -64,9 +69,25 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             // Populate the textviews with data.
             mTitleText.setText(currentPost.getTitulo());
 
+            Log.d("viewholder",currentPost.getTitulo());
+            Log.d("viewholder",currentPost.getFotos()[0]);
+
             // Load the images into the ImageView using the Glide library.
-            Glide.with(m_context).load(
-                    currentPost.getFotos()[0]).into(mPostImage);
+            Glide.with(m_context).load(currentPost.getFotos()[0])
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            // log exception
+                            Log.e("TAG", "Error loading image", e);
+                            return false; // important to return false so the error placeholder can be placed
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .into(mPostImage);
         }
 
         @Override

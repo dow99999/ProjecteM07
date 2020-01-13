@@ -16,6 +16,18 @@ public class Post {
     public Usuario getUsuario(){ return m_usuario; }
     public String[] getFotos(){ return m_foto; }
 
+    public Post(){
+
+    }
+
+    public Post(String titulo, String desc, LocalDateTime fecha, Usuario u, String[] foto){
+        m_titulo = titulo;
+        m_descripcion = desc;
+        m_fecha = fecha;
+        m_usuario = u;
+        m_foto = foto;
+    }
+
     public void setTitulo(String t){ m_titulo = t; }
     public void setDescripcion(String d){ m_descripcion = d; }
     public void setFechaRaw(LocalDateTime e){ m_fecha = e; }

@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.munoz.diego.projectem07.modelo.Modelo;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText m_user;
@@ -20,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Modelo.initModelo();
 
         m_user = findViewById(R.id.etUser);
         m_pass = findViewById(R.id.etPassword);
