@@ -57,6 +57,8 @@ public class RegisterActivity extends AppCompatActivity {
 
             Toast.makeText(this, "USUARIO CREADO", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, LoginActivity.class);
+
+
             startActivity(intent);
         }
 

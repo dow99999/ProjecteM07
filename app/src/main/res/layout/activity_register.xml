@@ -59,9 +59,9 @@
         android:layout_width="100dp"
         android:layout_height="27dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:gravity="end"
-        android:text="Sexo"
+        android:text="@string/sexo"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -110,7 +110,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/escribe_tu_e_mail"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/etUsuario" />
 
@@ -152,6 +152,7 @@
         app:layout_constraintVertical_bias="0.897" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="109dp"
@@ -160,28 +161,30 @@
     <RadioGroup
         android:layout_width="178dp"
         android:layout_height="107dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/etContrasena2">
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/hombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hombre" />
+            android:text="@string/hombre" />
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/mujer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mujer" />
+            android:checked="false"
+            android:text="@string/mujer" />
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/otro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Otro" />
+            android:checked="true"
+            android:text="@string/otro" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
