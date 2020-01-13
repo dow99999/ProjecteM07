@@ -58,12 +58,13 @@
         android:id="@+id/textView4"
         android:layout_width="100dp"
         android:layout_height="27dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:gravity="end"
         android:text="Sexo"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/textView3"
@@ -156,31 +157,31 @@
         tools:layout_editor_absoluteX="109dp"
         tools:layout_editor_absoluteY="388dp" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Hombre"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasena2"
-        tools:layout_editor_absoluteX="124dp" />
+    <RadioGroup
+        android:layout_width="178dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Mujer"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton"
-        tools:layout_editor_absoluteX="124dp" />
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hombre" />
 
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Otros"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton2"
-        tools:layout_editor_absoluteX="125dp" />
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mujer" />
+
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Otro" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
