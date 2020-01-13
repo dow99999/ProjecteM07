@@ -73,24 +73,6 @@ public class RegisterActivity extends AppCompatActivity {
             //RadioButton
             int checkedRadioButtonId = m_sexo.getCheckedRadioButtonId();
             editor.putInt("checkedRadioButtonId", checkedRadioButtonId);
-
-            /*switch (view.getId()) {
-                case R.id.rbhombre:
-                    sexo = "hombre";
-
-                    break;
-                case R.id.rbmujer:
-                    sexo = "mujer";
-                    editor.putString("mujer", sexo);
-                    break;
-                case R.id.rbotro:
-                    sexo = "otro";
-                    editor.pu
-                    break;
-                default:
-                    break;
-            }*/
-
             editor.apply();
 
             showToast("Usuario/a Creado");
