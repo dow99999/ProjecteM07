@@ -142,14 +142,11 @@
         android:id="@+id/btn_Usuario"
         android:layout_width="118dp"
         android:layout_height="49dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginStart="68dp"
         android:onClick="handleCrearUsuario"
         android:text="@string/registrarse"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasena2"
-        app:layout_constraintVertical_bias="0.897" />
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/rg_grupo_de_sexo_uwu" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
