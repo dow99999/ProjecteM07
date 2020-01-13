@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
+
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -17,6 +19,11 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText m_Email;
     private EditText m_Contrasena;
     private EditText m_Contrasena2;
+
+    private RadioGroup m_sexo;
+    private RadioButton m_hombre;
+    private RadioButton m_mujer;
+    private RadioButton m_otro;
 
 
     @Override
@@ -30,41 +37,67 @@ public class RegisterActivity extends AppCompatActivity {
         m_Contrasena = findViewById(R.id.etContrasena);
         m_Contrasena2 = findViewById(R.id.etContrasena2);
 
+        m_sexo = findViewById(R.id.rg_grupo_de_sexo_uwu);
+        m_hombre = findViewById(R.id.rbhombre);
+        m_mujer = findViewById(R.id.rbmujer);
+        m_otro = findViewById(R.id.rbotro);
+
+    }
+
+    public void showToast(String message) {
+        Toast.makeText(getApplicationContext(), message,
+                Toast.LENGTH_LONG).show();
     }
 
     public void handleCrearUsuario(View view) {
-        boolean esBien = true;
         String nombre = m_Nombre.getText().toString();
         String usuario = m_Usuario.getText().toString();
         String email = m_Email.getText().toString();
         String paswd1 = m_Contrasena.getText().toString();
         String paswd2 = m_Contrasena2.getText().toString();
 
+
         SharedPreferences user_info = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = user_info.edit();
 
 
         if (!paswd1.equals(paswd2)) {
-            Toast.makeText(this, "Las contraseñas no coinciden.", Toast.LENGTH_SHORT).show();
+            showToast("Las contraseñas no coinciden");
         } else if (nombre.equals("") || usuario.equals("") || email.equals("") || paswd1.equals("")) {
-            Toast.makeText(this, "Debes rellenar todos los campos.", Toast.LENGTH_LONG).show();
+            showToast("Debes rellenar todos los campos.");
         } else {
             editor.putString("nombre", nombre);
             editor.putString("user", usuario);
             editor.putString("email", email);
             editor.putString("pass", paswd1);
+            //RadioButton
+            int checkedRadioButtonId = m_sexo.getCheckedRadioButtonId();
+            editor.putInt("checkedRadioButtonId", checkedRadioButtonId);
+
+            /*switch (view.getId()) {
+                case R.id.rbhombre:
+                    sexo = "hombre";
+
+                    break;
+                case R.id.rbmujer:
+                    sexo = "mujer";
+                    editor.putString("mujer", sexo);
+                    break;
+                case R.id.rbotro:
+                    sexo = "otro";
+                    editor.pu
+                    break;
+                default:
+                    break;
+            }*/
+
             editor.apply();
 
-            Toast.makeText(this, "USUARIO CREADO", Toast.LENGTH_LONG).show();
+            showToast("Usuario/a Creado");
             Intent intent = new Intent(this, LoginActivity.class);
-
 
             startActivity(intent);
         }
-
-
     }
-
-
 }
 

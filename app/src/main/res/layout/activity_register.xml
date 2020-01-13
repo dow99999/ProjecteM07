@@ -159,6 +159,7 @@
         tools:layout_editor_absoluteY="388dp" />
 
     <RadioGroup
+        android:id="@+id/rg_grupo_de_sexo_uwu"
         android:layout_width="178dp"
         android:layout_height="107dp"
         android:layout_marginStart="8dp"
@@ -167,20 +168,20 @@
         app:layout_constraintTop_toBottomOf="@+id/etContrasena2">
 
         <RadioButton
-            android:id="@+id/hombre"
+            android:id="@+id/rbhombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/hombre" />
 
         <RadioButton
-            android:id="@+id/mujer"
+            android:id="@+id/rbmujer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="@string/mujer" />
 
         <RadioButton
-            android:id="@+id/otro"
+            android:id="@+id/rbotro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
