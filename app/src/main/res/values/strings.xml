@@ -24,7 +24,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Pantalla principal</string>
-    <string name="menu_gallery">Gallery (TODO)</string>
+    <string name="menu_gallery">Postear (TODO)</string>
     <string name="menu_slideshow">Slideshow (TODO)</string>
     <string name="menu_tools">Tools (TODO)</string>
     <string name="menu_share">Share (TODO)</string>
@@ -34,4 +34,14 @@
     <string name="hombre">Hombre</string>
     <string name="mujer">Mujer</string>
     <string name="otro">Otro</string>
+
+    <string name="animal">Animal</string>
+    <string name="no_lista">No está en la lista:</string>
+    <string name="no_nombre">No se el nombre</string>
+    <string-array name="animales">
+        <item>Jabalí</item>
+        <item>Ardilla</item>
+        <item>Mapache</item>
+    </string-array>
+
 </resources>
