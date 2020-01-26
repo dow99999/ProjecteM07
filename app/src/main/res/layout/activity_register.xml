@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_login_register"
     android:orientation="vertical">
 
     <TextView
@@ -16,7 +17,8 @@
         android:text="@string/nombre"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Style_text_views" />
 
     <TextView
         android:id="@+id/textView5"
@@ -28,7 +30,8 @@
         android:text="@string/e_mail"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        style="@style/Style_text_views"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -40,7 +43,8 @@
         android:text="@string/contrase_a"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        style="@style/Style_text_views"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -52,38 +56,42 @@
         android:text="@string/repetir_contrase_a"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        style="@style/Style_text_views"/>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="100dp"
         android:layout_height="27dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:gravity="end"
         android:text="@string/sexo"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        style="@style/Style_text_views"/>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="100dp"
         android:layout_height="27dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:gravity="end"
         android:text="@string/usuario"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        style="@style/Style_text_views"/>
 
     <EditText
         android:id="@+id/etNombre"
-        android:layout_width="175dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="76dp"
+        android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escribe_tu_nombre"
         android:inputType="textPersonName"
@@ -92,10 +100,11 @@
 
     <EditText
         android:id="@+id/etUsuario"
-        android:layout_width="175dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escribe_tu_usuario"
         android:inputType="textPersonName"
@@ -104,10 +113,11 @@
 
     <EditText
         android:id="@+id/etEmail"
-        android:layout_width="175dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escribe_tu_e_mail"
         android:inputType="textEmailAddress"
@@ -116,10 +126,11 @@
 
     <EditText
         android:id="@+id/etContrasena"
-        android:layout_width="175dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escrtibe_tu_contrase_a"
         android:inputType="textPersonName|textPassword"
@@ -128,10 +139,11 @@
 
     <EditText
         android:id="@+id/etContrasena2"
-        android:layout_width="175dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/repite_tu_contrase_a"
         android:inputType="textPersonName|textPassword"
@@ -140,27 +152,24 @@
 
     <Button
         android:id="@+id/btn_Usuario"
-        android:layout_width="118dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="68dp"
+        android:layout_width="177dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/botones_login_register"
         android:onClick="handleCrearUsuario"
         android:text="@string/registrarse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/rg_grupo_de_sexo_uwu" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="388dp" />
-
-    <RadioGroup
         android:id="@+id/rg_grupo_de_sexo_uwu"
-        android:layout_width="178dp"
-        android:layout_height="107dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/edt_login_register"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/etContrasena2">
 

@@ -3,44 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_main">
 
     <Spinner
         android:id="@+id/sp_animal"
         android:layout_width="165dp"
         android:layout_height="27dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toEndOf="@+id/t_animal"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="238dp"
         android:layout_height="159dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/t_animal"
+        style="@style/Style_text_views2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
         android:text="@string/animal"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/et_nombre_otro"
         android:layout_width="165dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
@@ -52,17 +54,18 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="32dp"
         android:text="@string/no_lista"
         app:layout_constraintTop_toBottomOf="@+id/t_animal"
-        tools:layout_editor_absoluteX="27dp" />
+        tools:layout_editor_absoluteX="32dp"
+        />
 
     <Switch
         android:id="@+id/sw_no_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:text="@string/no_nombre"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        tools:layout_editor_absoluteX="27dp" />
+        tools:layout_editor_absoluteX="29dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
