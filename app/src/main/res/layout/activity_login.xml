@@ -79,16 +79,16 @@
         android:layout_width="99dp"
         android:layout_height="47dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/botones_login_register"
         android:onClick="handleRegister"
         android:text="@string/registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.718"
+        app:layout_constraintHorizontal_bias="0.671"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.106" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -101,4 +101,41 @@
         app:layout_constraintVertical_bias="0.082"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <ImageButton
+        android:id="@+id/ib_catalan"
+        android:layout_width="81dp"
+        android:layout_height="59dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ib_castellano"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintVertical_bias="0.683"
+        app:srcCompat="@drawable/catalan" />
+
+    <ImageButton
+        android:id="@+id/ib_ingles"
+        android:layout_width="84dp"
+        android:layout_height="56dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintStart_toEndOf="@+id/ib_castellano"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintVertical_bias="0.688"
+        app:srcCompat="@drawable/ingles" />
+
+    <ImageButton
+        android:id="@+id/ib_castellano"
+        android:layout_width="83dp"
+        android:layout_height="56dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintVertical_bias="0.688"
+        app:srcCompat="@drawable/castellano" />
 </androidx.constraintlayout.widget.ConstraintLayout>

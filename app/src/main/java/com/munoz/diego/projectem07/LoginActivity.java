@@ -2,16 +2,20 @@ package com.munoz.diego.projectem07;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.munoz.diego.projectem07.modelo.Modelo;
+import com.yariksoffice.lingver.Lingver;
+
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,13 +24,46 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try{
+            Lingver.init(LoginActivity.this.getApplication(), "ca");
+        }catch(IllegalStateException e){}
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         Modelo.initModelo();
 
+
         m_user = findViewById(R.id.etUser);
         m_pass = findViewById(R.id.etPassword);
+
+        final ImageButton catalan = findViewById(R.id.ib_catalan);
+        ImageButton castellano = findViewById(R.id.ib_castellano);
+        ImageButton ingles = findViewById(R.id.ib_ingles);
+
+        catalan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Lingver.getInstance().setLocale(LoginActivity.this.getApplication(), "ca");
+                recreate();
+            }
+        });
+
+        castellano.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Lingver.getInstance().setLocale(LoginActivity.this.getApplication(), "es");
+                recreate();
+            }
+        });
+
+        ingles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Lingver.getInstance().setLocale(LoginActivity.this.getApplication(), "en");
+                recreate();
+            }
+        });
     }
 
     public void handleRegister(View view){
