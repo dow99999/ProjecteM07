@@ -38,7 +38,7 @@
 
     <string name="animal">Animal</string>
     <string name="no_lista">Not in the list:</string>
-    <string name="no_nombre">I don't know the name</string>
+    <string name="no_nombre">I do not know the name</string>
     <string-array name="animales">
         <item>Wild boar</item>
         <item>Squirrel</item>
