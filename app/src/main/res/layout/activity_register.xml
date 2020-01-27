@@ -90,24 +90,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escribe_tu_nombre"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="79dp" />
 
     <EditText
         android:id="@+id/etUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escribe_tu_usuario"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/etNombre" />
 
@@ -116,11 +119,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escribe_tu_e_mail"
         android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/etUsuario" />
 
@@ -129,11 +134,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escrtibe_tu_contrase_a"
         android:inputType="textPersonName|textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
@@ -142,42 +149,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/repite_tu_contrase_a"
         android:inputType="textPersonName|textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/etContrasena" />
 
     <Button
         android:id="@+id/btn_Usuario"
-        android:layout_width="177dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_width="302dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/botones_login_register"
         android:onClick="handleCrearUsuario"
         android:text="@string/registrarse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rg_grupo_de_sexo_uwu" />
 
     <RadioGroup
         android:id="@+id/rg_grupo_de_sexo_uwu"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="121dp"
+        android:layout_height="89dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="44dp"
         android:background="@drawable/edt_login_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/etContrasena2">
-
-        <RadioButton
-            android:id="@+id/rbhombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hombre" />
 
         <RadioButton
             android:id="@+id/rbmujer"
@@ -185,6 +189,12 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="@string/mujer" />
+
+        <RadioButton
+            android:id="@+id/rbhombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hombre" />
 
         <RadioButton
             android:id="@+id/rbotro"
