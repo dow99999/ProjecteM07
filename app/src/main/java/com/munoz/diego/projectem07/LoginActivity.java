@@ -49,7 +49,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Lingver.getInstance().setLocale(LoginActivity.this.getApplication(), "ca");
                 finish();
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 startActivity(getIntent());
+                //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
 
@@ -58,7 +60,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Lingver.getInstance().setLocale(LoginActivity.this.getApplication(), "es");
                 finish();
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 startActivity(getIntent());
+                //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
 
@@ -67,7 +71,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Lingver.getInstance().setLocale(LoginActivity.this.getApplication(), "en");
                 finish();
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 startActivity(getIntent());
+                //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
     }
@@ -96,13 +102,5 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Usuario inválido.", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void runFadeInAnimation() {
-        Animation a = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-        a.reset();
-        ConstraintLayout ll = findViewById(R.id.);
-        ll.clearAnimation();
-        ll.startAnimation(a);
     }
 }
