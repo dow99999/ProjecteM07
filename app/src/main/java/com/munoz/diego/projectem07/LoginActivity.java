@@ -1,6 +1,7 @@
 package com.munoz.diego.projectem07;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Application;
 import android.content.Intent;
@@ -8,6 +9,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -45,7 +48,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Lingver.getInstance().setLocale(LoginActivity.this.getApplication(), "ca");
-                recreate();
+                finish();
+                startActivity(getIntent());
             }
         });
 
@@ -53,7 +57,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Lingver.getInstance().setLocale(LoginActivity.this.getApplication(), "es");
-                recreate();
+                finish();
+                startActivity(getIntent());
             }
         });
 
@@ -61,7 +66,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Lingver.getInstance().setLocale(LoginActivity.this.getApplication(), "en");
-                recreate();
+                finish();
+                startActivity(getIntent());
             }
         });
     }
@@ -90,5 +96,13 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Usuario inválido.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void runFadeInAnimation() {
+        Animation a = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        a.reset();
+        ConstraintLayout ll = findViewById(R.id.);
+        ll.clearAnimation();
+        ll.startAnimation(a);
     }
 }
