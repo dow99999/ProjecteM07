@@ -2,12 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cl_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_login_register"
     tools:context=".LoginActivity">
-
 
     <TextView
         android:id="@+id/tvUsers"
@@ -15,13 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:labelFor="@id/etUser"
         android:text="@string/usuario"
         android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.259"
+        app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvPassword"
@@ -37,8 +34,8 @@
 
     <Button
         android:id="@+id/btnLogin"
+        style="@style/Style_normal_button"
         android:layout_width="237dp"
-        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/botones_login_register"
         android:onClick="handleLogin"
@@ -51,13 +48,12 @@
     <EditText
         android:id="@+id/etUser"
         android:layout_width="238dp"
-        android:layout_height="46dp"
+        style="@style/Style_edit_text"
         android:layout_marginTop="12dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escribe_tu_usuario"
         android:inputType="textPersonName"
-        android:labelFor="@id/tvUsers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,13 +62,12 @@
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="238dp"
-        android:layout_height="46dp"
+        style="@style/Style_edit_text"
         android:layout_marginTop="8dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escrtibe_tu_contrase_a"
         android:inputType="textPersonName|textPassword"
-        android:labelFor="@id/tvPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +76,7 @@
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="99dp"
-        android:layout_height="48dp"
+        style="@style/Style_normal_button"
         android:layout_marginStart="44dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/botones_login_register"
@@ -89,21 +84,10 @@
         android:text="@string/registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.718"
+        app:layout_constraintHorizontal_bias="0.671"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.106" />
 
     <ImageButton
         android:id="@+id/ib_catalan"
@@ -116,6 +100,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         app:layout_constraintVertical_bias="0.683"
+    android:contentDescription="@string/catalan"
         app:srcCompat="@drawable/catalan" />
 
     <ImageButton
@@ -129,6 +114,7 @@
         app:layout_constraintStart_toEndOf="@+id/ib_castellano"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         app:layout_constraintVertical_bias="0.688"
+        android:contentDescription="@string/ingles"
         app:srcCompat="@drawable/ingles" />
 
     <ImageButton
@@ -141,5 +127,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         app:layout_constraintVertical_bias="0.688"
+        android:contentDescription="@string/castellano"
         app:srcCompat="@drawable/castellano" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="101dp"
+        android:layout_height="38dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/license"
+        android:contentDescription="@string/licencia" />
 </androidx.constraintlayout.widget.ConstraintLayout>

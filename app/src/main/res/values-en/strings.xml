@@ -44,4 +44,5 @@
         <item>Squirrel</item>
         <item>Raccon</item>
     </string-array>
+    <string name="licencia">Licence Creative Commons BY-NC-SA</string>
 </resources>

@@ -15,6 +15,10 @@
 
     <string name="login">Login</string>
     <string name="registrarse">Registrar-se</string>
+    <string name="catalan" translatable="false">idioma català</string>
+    <string name="castellano" translatable="false">idioma castellano</string>
+    <string name="ingles" translatable="false">language english</string>
+    <string name="licencia">Llicència Creative Commons BY-NC-SA</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

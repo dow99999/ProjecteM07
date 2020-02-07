@@ -44,4 +44,5 @@
         <item>Ardilla</item>
         <item>Mapache</item>
     </string-array>
+    <string name="licencia">Licencia Creative Commons BY-NC-SA</string>
 </resources>

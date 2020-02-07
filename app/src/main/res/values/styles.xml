@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -33,5 +33,16 @@
         <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
         <item name="android:textAlignment">textStart</item>
     </style>
+
+    <style name="Style_normal_button" parent="AppTheme">
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="Style_edit_text" parent="AppTheme">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textColorHint">@color/colorLetraHint</item>
+    </style>
+
+
 
 </resources>

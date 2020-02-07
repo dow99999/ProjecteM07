@@ -10,9 +10,9 @@
     <TextView
         android:id="@+id/tv_nom"
         style="@style/Style_text_views"
-        android:layout_width="100dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="72dp"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
         android:gravity="end"
         android:text="@string/nombre"
         android:textSize="18sp"
@@ -21,10 +21,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_usuari"
+        style="@style/Style_text_views"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:gravity="end"
+        android:text="@string/usuario"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/etUsuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nom" />
+
+    <TextView
         android:id="@+id/tv_email"
         style="@style/Style_text_views"
-        android:layout_width="100dp"
-        android:layout_height="27dp"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:gravity="end"
         android:text="@string/e_mail"
@@ -36,8 +49,8 @@
     <TextView
         android:id="@+id/tv_contrasena"
         style="@style/Style_text_views"
-        android:layout_width="100dp"
-        android:layout_height="27dp"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:gravity="end"
         android:text="@string/contrase_a"
@@ -50,8 +63,8 @@
     <TextView
         android:id="@+id/tv_repetir_contrasena"
         style="@style/Style_text_views"
-        android:layout_width="100dp"
-        android:layout_height="27dp"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:gravity="end"
         android:text="@string/repetir_contrase_a"
@@ -64,34 +77,22 @@
     <TextView
         android:id="@+id/tv_sexe"
         style="@style/Style_text_views"
-        android:layout_width="100dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="44dp"
         android:gravity="end"
         android:text="@string/sexo"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/rg_grupo_de_sexo_uwu"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_repetir_contrasena" />
 
-    <TextView
-        android:id="@+id/tv_usuari"
-        style="@style/Style_text_views"
-        android:layout_width="100dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="24dp"
-        android:gravity="end"
-        android:text="@string/usuario"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/etUsuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nom" />
-
     <EditText
         android:id="@+id/etNombre"
+        style="@style/Style_edit_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
         android:hint="@string/escribe_tu_nombre"
@@ -105,7 +106,7 @@
     <EditText
         android:id="@+id/etUsuario"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Style_edit_text"
         android:layout_marginTop="24dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
@@ -120,7 +121,7 @@
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Style_edit_text"
         android:layout_marginTop="28dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
@@ -135,7 +136,7 @@
     <EditText
         android:id="@+id/etContrasena"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Style_edit_text"
         android:layout_marginTop="24dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
@@ -150,7 +151,7 @@
     <EditText
         android:id="@+id/etContrasena2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Style_edit_text"
         android:layout_marginTop="28dp"
         android:background="@drawable/edt_login_register"
         android:ems="10"
@@ -177,13 +178,13 @@
 
     <RadioGroup
         android:id="@+id/rg_grupo_de_sexo_uwu"
-        android:layout_width="118dp"
-        android:layout_height="88dp"
+        android:layout_width="101dp"
+        android:layout_height="95dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/edt_login_register"
         android:labelFor="@id/tv_sexe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintHorizontal_bias="0.73"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etContrasena2">
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#99CC99</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#003630</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="colorButons">#99CC99</color>
-    <color name="colorEditTexts">#cce5cc</color>
+    <color name="colorEditTexts">#FFFFFF</color>
 
     <color name="colorFondoLogReg_Start">#005900</color>
     <color name="colorFondoLogReg_End">#008000</color>
@@ -16,6 +16,7 @@
     <color name="colorNav_Start">#198c66</color>
     <color name="colorNav_End">#198c19</color>
 
-    <color name="colorLetraTextViews1">#b2d8b2</color>
+    <color name="colorLetraTextViews1">#FFFFFF</color>
     <color name="colorLetraTextViews2">#001900</color>
+    <color name="colorLetraHint">#317500</color>
 </resources>
