@@ -1,212 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_login_register"
-    android:orientation="vertical">
+    android:scrollbarStyle="insideOverlay">
 
-    <TextView
-        android:id="@+id/tv_nom"
-        style="@style/Style_text_views"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
-        android:gravity="end"
-        android:text="@string/nombre"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/etNombre"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_usuari"
-        style="@style/Style_text_views"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:gravity="end"
-        android:text="@string/usuario"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/etUsuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nom" />
 
-    <TextView
-        android:id="@+id/tv_email"
-        style="@style/Style_text_views"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:gravity="end"
-        android:text="@string/e_mail"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/etEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_usuari" />
+        <TextView
+            android:id="@+id/tv_nom"
+            style="@style/Style_text_views"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="78dp"
+            android:gravity="end"
+            android:text="@string/nombre"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/etNombre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_contrasena"
-        style="@style/Style_text_views"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:gravity="end"
-        android:text="@string/contrase_a"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/etContrasena"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+        <TextView
+            android:id="@+id/tv_usuari"
+            style="@style/Style_text_views"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:gravity="end"
+            android:text="@string/usuario"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/etUsuario"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nom" />
 
-    <TextView
-        android:id="@+id/tv_repetir_contrasena"
-        style="@style/Style_text_views"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:gravity="end"
-        android:text="@string/repetir_contrase_a"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/etContrasena2"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_contrasena" />
+        <TextView
+            android:id="@+id/tv_email"
+            style="@style/Style_text_views"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:gravity="end"
+            android:text="@string/e_mail"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/etEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_usuari" />
 
-    <TextView
-        android:id="@+id/tv_sexe"
-        style="@style/Style_text_views"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="44dp"
-        android:gravity="end"
-        android:text="@string/sexo"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/rg_grupo_de_sexo_uwu"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_repetir_contrasena" />
+        <TextView
+            android:id="@+id/tv_contrasena"
+            style="@style/Style_text_views"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:gravity="end"
+            android:text="@string/contrase_a"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/etContrasena"
+            app:layout_constraintHorizontal_bias="0.458"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_email" />
 
-    <EditText
-        android:id="@+id/etNombre"
-        style="@style/Style_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/edt_login_register"
-        android:ems="10"
-        android:hint="@string/escribe_tu_nombre"
-        android:inputType="textPersonName"
-        android:labelFor="@id/tv_nom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_repetir_contrasena"
+            style="@style/Style_text_views"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:gravity="end"
+            android:text="@string/repetir_contrase_a"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/etContrasena2"
+            app:layout_constraintHorizontal_bias="0.458"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_contrasena" />
 
-    <EditText
-        android:id="@+id/etUsuario"
-        android:layout_width="wrap_content"
-        style="@style/Style_edit_text"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/edt_login_register"
-        android:ems="10"
-        android:hint="@string/escribe_tu_usuario"
-        android:inputType="textPersonName"
-        android:labelFor="@id/tv_usuari"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre" />
+        <TextView
+            android:id="@+id/tv_sexe"
+            style="@style/Style_text_views"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="44dp"
+            android:gravity="end"
+            android:text="@string/sexo"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/rg_grupo_de_sexo_uwu"
+            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_repetir_contrasena" />
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="wrap_content"
-        style="@style/Style_edit_text"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/edt_login_register"
-        android:ems="10"
-        android:hint="@string/escribe_tu_e_mail"
-        android:inputType="textEmailAddress"
-        android:labelFor="@id/tv_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsuario" />
+        <EditText
+            android:id="@+id/etNombre"
+            style="@style/Style_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="78dp"
+            android:background="@drawable/edt_login_register"
+            android:ems="10"
+            android:hint="@string/escribe_tu_nombre"
+            android:inputType="textPersonName"
+            android:labelFor="@id/tv_nom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.797"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etContrasena"
-        android:layout_width="wrap_content"
-        style="@style/Style_edit_text"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/edt_login_register"
-        android:ems="10"
-        android:hint="@string/escrtibe_tu_contrase_a"
-        android:inputType="textPersonName|textPassword"
-        android:labelFor="@id/tv_contrasena"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        <EditText
+            android:id="@+id/etUsuario"
+            style="@style/Style_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/edt_login_register"
+            android:ems="10"
+            android:hint="@string/escribe_tu_usuario"
+            android:inputType="textPersonName"
+            android:labelFor="@id/tv_usuari"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.797"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etNombre" />
 
-    <EditText
-        android:id="@+id/etContrasena2"
-        android:layout_width="wrap_content"
-        style="@style/Style_edit_text"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/edt_login_register"
-        android:ems="10"
-        android:hint="@string/repite_tu_contrase_a"
-        android:inputType="textPersonName|textPassword"
-        android:labelFor="@id/tv_repetir_contrasena"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasena" />
+        <EditText
+            android:id="@+id/etEmail"
+            style="@style/Style_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/edt_login_register"
+            android:ems="10"
+            android:hint="@string/escribe_tu_e_mail"
+            android:inputType="textEmailAddress"
+            android:labelFor="@id/tv_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.797"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etUsuario" />
 
-    <Button
-        android:id="@+id/btn_Usuario"
-        android:layout_width="302dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/botones_login_register"
-        android:onClick="handleCrearUsuario"
-        android:text="@string/registrarse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_grupo_de_sexo_uwu" />
+        <EditText
+            android:id="@+id/etContrasena"
+            style="@style/Style_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/edt_login_register"
+            android:ems="10"
+            android:hint="@string/escrtibe_tu_contrase_a"
+            android:inputType="textPersonName|textPassword"
+            android:labelFor="@id/tv_contrasena"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.797"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
-    <RadioGroup
-        android:id="@+id/rg_grupo_de_sexo_uwu"
-        android:layout_width="101dp"
-        android:layout_height="95dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/edt_login_register"
-        android:labelFor="@id/tv_sexe"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.73"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasena2">
+        <EditText
+            android:id="@+id/etContrasena2"
+            style="@style/Style_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/edt_login_register"
+            android:ems="10"
+            android:hint="@string/repite_tu_contrase_a"
+            android:inputType="textPersonName|textPassword"
+            android:labelFor="@id/tv_repetir_contrasena"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.797"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etContrasena" />
 
-        <RadioButton
-            android:id="@+id/rbmujer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="@string/mujer" />
+        <Button
+            android:id="@+id/btn_Usuario"
+            android:layout_width="302dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/botones_login_register"
+            android:onClick="handleCrearUsuario"
+            android:text="@string/registrarse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.44"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rg_grupo_de_sexo_uwu" />
 
-        <RadioButton
-            android:id="@+id/rbhombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hombre" />
+        <RadioGroup
+            android:id="@+id/rg_grupo_de_sexo_uwu"
+            android:layout_width="101dp"
+            android:layout_height="95dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/edt_login_register"
+            android:labelFor="@id/tv_sexe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.73"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etContrasena2">
 
-        <RadioButton
-            android:id="@+id/rbotro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/otro" />
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/rbmujer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/mujer" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <RadioButton
+                android:id="@+id/rbhombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hombre" />
+
+            <RadioButton
+                android:id="@+id/rbotro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/otro" />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
