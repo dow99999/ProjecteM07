@@ -17,7 +17,7 @@
             style="@style/Style_text_views"
             android:layout_width="120dp"
             android:layout_height="48dp"
-            android:layout_marginTop="78dp"
+            android:layout_marginTop="28dp"
             android:gravity="end"
             android:text="@string/nombre"
             android:textSize="18sp"
@@ -97,7 +97,7 @@
             android:id="@+id/etNombre"
             style="@style/Style_edit_text"
             android:layout_width="wrap_content"
-            android:layout_marginTop="78dp"
+            android:layout_marginTop="28dp"
             android:background="@drawable/edt_login_register"
             android:ems="10"
             android:hint="@string/escribe_tu_nombre"
@@ -172,44 +172,44 @@
             android:id="@+id/btn_Usuario"
             android:layout_width="302dp"
             android:layout_height="48dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/botones_login_register"
             android:onClick="handleCrearUsuario"
             android:text="@string/registrarse"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.44"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rg_grupo_de_sexo_uwu" />
 
         <RadioGroup
             android:id="@+id/rg_grupo_de_sexo_uwu"
-            android:layout_width="101dp"
-            android:layout_height="95dp"
+            android:layout_width="175dp"
+            android:layout_height="144dp"
             android:layout_marginTop="36dp"
             android:background="@drawable/edt_login_register"
             android:labelFor="@id/tv_sexe"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.73"
+            app:layout_constraintHorizontal_bias="0.82"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etContrasena2">
 
             <RadioButton
                 android:id="@+id/rbmujer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:checked="false"
                 android:text="@string/mujer" />
 
             <RadioButton
                 android:id="@+id/rbhombre"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="@string/hombre" />
 
             <RadioButton
                 android:id="@+id/rbotro"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:checked="true"
                 android:text="@string/otro" />
         </RadioGroup>

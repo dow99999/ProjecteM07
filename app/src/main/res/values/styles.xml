@@ -38,11 +38,18 @@
         <item name="android:layout_height">48dp</item>
     </style>
 
-    <style name="Style_edit_text" parent="AppTheme">
-        <item name="android:layout_height">48dp</item>
-        <item name="android:textColorHint">@color/colorLetraHint</item>
+    <style name="Style_image_button" parent="AppTheme">
+        <item name="android:background">@null</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">60dp</item>
     </style>
 
-
+    <style name="Style_edit_text" parent="AppTheme">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textColorHint">@color/colorLetraHint</item>
+    </style>
 
 </resources>
