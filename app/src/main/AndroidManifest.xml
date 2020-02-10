@@ -31,7 +31,9 @@
             android:parentActivityName=".LoginActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".ui.Perfil" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.Perfil" android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
+            ></activity>
     </application>
 
 </manifest>
