@@ -1,5 +1,6 @@
 package com.munoz.diego.projectem07;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.munoz.diego.projectem07.modelo.Modelo;
+import com.munoz.diego.projectem07.ui.Perfil;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -72,5 +74,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void handleAbrirPerfil(View view) {
+        Intent intent = new Intent(this, Perfil.class);
+        startActivity(intent);
     }
 }
