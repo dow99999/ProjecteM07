@@ -28,11 +28,11 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Pantalla principal</string>
-    <string name="menu_gallery">Postegar (TODO)</string>
-    <string name="menu_slideshow">Slideshow (TODO)</string>
-    <string name="menu_tools">Tools (TODO)</string>
-    <string name="menu_share">Share (TODO)</string>
-    <string name="menu_send">Send (TODO)</string>
+    <string name="menu_gallery">Penjar / Fer foto</string>
+    <string name="menu_slideshow">Mapa</string>
+    <string name="menu_tools">Editar Perfil</string>
+    <string name="menu_share">Configuració</string>
+    <string name="menu_send">Sobre nosaltres</string>
 
     <string name="sexo">Sexe</string>
     <string name="hombre">Home</string>
