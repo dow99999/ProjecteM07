@@ -25,11 +25,11 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Main screen</string>
-    <string name="menu_gallery">Post (TODO)</string>
-    <string name="menu_slideshow">Slideshow (TODO)</string>
-    <string name="menu_tools">Tools (TODO)</string>
-    <string name="menu_share">Share (TODO)</string>
-    <string name="menu_send">Send (TODO)</string>
+    <string name="menu_gallery">Upload / Take photo</string>
+    <string name="menu_slideshow">Map</string>
+    <string name="menu_tools">Edit profile</string>
+    <string name="menu_share">Settings</string>
+    <string name="menu_send">About us</string>
 
     <string name="sexo">Sex</string>
     <string name="hombre">Man</string>
