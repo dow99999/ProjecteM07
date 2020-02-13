@@ -8,11 +8,11 @@
     <string name="contrase_a">Contraseña</string>
     <string name="repetir_contrase_a">Repetir contraseña</string>
     <string name="usuario">Usuario</string>
-    <string name="escribe_tu_nombre">Escribe tu nombre...</string>
-    <string name="escribe_tu_usuario">Escribe tu usuario...</string>
-    <string name="escribe_tu_e_mail">Escribe tu e-mail...</string>
-    <string name="escrtibe_tu_contrase_a">Escribe tu contraseña...</string>
-    <string name="repite_tu_contrase_a">Repite tu contraseña...</string>
+    <string name="escribe_tu_nombre">Escribe tu nombre…</string>
+    <string name="escribe_tu_usuario">Escribe tu usuario…</string>
+    <string name="escribe_tu_e_mail">Escribe tu e-mail…</string>
+    <string name="escrtibe_tu_contrase_a">Escribe tu contraseña…</string>
+    <string name="repite_tu_contrase_a">Repite tu contraseña…</string>
 
     <string name="login">Login</string>
     <string name="registrarse">Registrarse</string>
