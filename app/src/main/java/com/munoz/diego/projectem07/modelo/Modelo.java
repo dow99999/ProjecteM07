@@ -1,13 +1,17 @@
 package com.munoz.diego.projectem07.modelo;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Modelo {
 
-    public Modelo(){
-        m_posts = new HashMap<>();
-        m_usuarios = new HashMap<>();
+
+    private Modelo(){
+        m_auth = FirebaseAuth.getInstance();
+        m_current_user = m_auth.getCurrentUser();
     }
 
     public static void initModelo(){
@@ -15,28 +19,28 @@ public class Modelo {
     }
 
     public static Modelo getModelo(){
+
         return m_modelo;
     }
 
-    public void setCurrentUser(Usuario u){
+    public void setCurrentUser(FirebaseUser u){
         m_current_user = u;
     }
 
-    public Usuario getCurrentUser(){
+    public FirebaseUser getCurrentUser(){
         return m_current_user;
     }
 
-    public void addUser(Usuario u){
-        m_usuarios.put(u.getUsuario(), u);
+    public FirebaseAuth getFirebaseAuth(){
+        return m_auth;
     }
 
     private static Modelo m_modelo;
 
-    private Map<Usuario, Post> m_posts;
-    private Map<String, Usuario> m_usuarios;
+    FirebaseUser m_current_user;
+    private FirebaseAuth m_auth;
 
-    private Usuario m_current_user;
-
-
-
+    public void reloadCurrentUser() {
+        m_current_user = m_auth.getCurrentUser();
+    }
 }

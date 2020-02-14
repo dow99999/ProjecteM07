@@ -4,20 +4,28 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.munoz.diego.projectem07.modelo.Modelo;
 import com.munoz.diego.projectem07.modelo.Usuario;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private static final String TAG = "RA:Registro";
     private EditText m_Nombre;
     private EditText m_Usuario;
     private EditText m_Email;
@@ -29,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     private RadioButton m_mujer;
     private RadioButton m_otro;
 
+    private final Modelo m_modelo = Modelo.getModelo();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,39 +70,56 @@ public class RegisterActivity extends AppCompatActivity {
         String paswd2 = m_Contrasena2.getText().toString();
 
 
-        SharedPreferences user_info = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = user_info.edit();
-
+        //SharedPreferences user_info = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        //SharedPreferences.Editor editor = user_info.edit();
 
         if (!paswd1.equals(paswd2)) {
             showToast("Las contraseñas no coinciden");
         } else if (nombre.equals("") || usuario.equals("") || email.equals("") || paswd1.equals("")) {
             showToast("Debes rellenar todos los campos.");
         } else {
-            editor.putString("nombre", nombre);
-            editor.putString("user", usuario);
-            editor.putString("email", email);
-            editor.putString("pass", paswd1);
-            //RadioButton
-            int checkedRadioButtonId = m_sexo.getCheckedRadioButtonId();
-            editor.putInt("checkedRadioButtonId", checkedRadioButtonId);
-            editor.apply();
+            //editor.putString("nombre", nombre);
+            //editor.putString("user", usuario);
+            //editor.putString("email", email);
+            //editor.putString("pass", paswd1);
+            //int checkedRadioButtonId = m_sexo.getCheckedRadioButtonId();
+            //editor.putInt("checkedRadioButtonId", checkedRadioButtonId);
+            //editor.apply();
 
-            Usuario auxU = new Usuario();
+            registerFirebase(email, paswd1);
 
-            auxU.setNombre(nombre);
-            auxU.setUsuario(usuario);
-            auxU.setEmail(email);
-            auxU.setPass(paswd1);
+            //finish();
 
-            Modelo.getModelo().setCurrentUser(auxU);
-            Modelo.getModelo().addUser(auxU);
+            if(m_modelo.getCurrentUser() != null){
+                UserProfileChangeRequest pr = new UserProfileChangeRequest.Builder().setDisplayName(nombre).build();
 
-            showToast("Usuario/a Creado");
-            Intent intent = new Intent(this, LoginActivity.class);
+                m_modelo.getCurrentUser().updateProfile(pr);
 
-            startActivity(intent);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
         }
+    }
+    
+    public void registerFirebase(String email, String password) {
+        m_modelo.getFirebaseAuth().createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            m_modelo.reloadCurrentUser();
+
+                            showToast("Usuario/a Creado");
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(RegisterActivity.this, "No se pudo crear el usuario",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
 

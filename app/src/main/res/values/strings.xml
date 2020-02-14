@@ -42,6 +42,7 @@
     <string name="animal">Animal</string>
     <string name="no_lista">No esta en la llista:</string>
     <string name="no_nombre">No se el nom</string>
+    <string name="cerrar_sesion">Tancar sessió</string>
     <string-array name="animales">
         <item>Porc Senglar</item>
         <item>Esquirol</item>
