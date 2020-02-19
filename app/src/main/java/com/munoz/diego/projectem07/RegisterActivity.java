@@ -37,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     private RadioButton m_mujer;
     private RadioButton m_otro;
 
-    private final Modelo m_modelo = Modelo.getModelo();
+    private final Modelo m_modelo = Modelo.getModelo();//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

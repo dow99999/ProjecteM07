@@ -7,4 +7,5 @@
         android:title="@string/cerrar_sesion"
         android:onClick="handleCerrarSesion"
         app:showAsAction="never" />
+    <!---->
 </menu>
