@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">@color/paletaVerdes_light</color>
     <color name="colorPrimaryDark">@color/paletaVerdes_dark</color>
-    <color name="colorAccent">#00FFFFFF</color>
+    <color name="colorAccent">#009688</color>
 
     <color name="colorButons">@color/paletaVerdes_lightGreen</color>
     <color name="colorEditTexts">@color/paletaVerdes_light</color>
