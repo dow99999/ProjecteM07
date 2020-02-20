@@ -1,6 +1,9 @@
 package com.munoz.diego.projectem07;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -43,6 +46,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final int APP_WRITE_EXTERNAL_STORAGE = 27;
+
     private AppBarConfiguration mAppBarConfiguration;
 
     private static final int REQUEST_IMAGE_CAPTURE = 111;
@@ -71,6 +76,29 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        // Here, thisActivity is the current activity
+        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            // Should we show an explanation?
+            if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed; request the permission
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, APP_WRITE_EXTERNAL_STORAGE);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        } else {
+            // Permission has already been granted
+        }
+
+
 
     }
 
@@ -102,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String currentPhotoPath;
 
+    private String yeet;
+
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -122,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
     public void handleHacerFoto(View view){
         onLaunchCamera();
         //galleryAddPic();
-        setPic();
     }
 
     public void onLaunchCamera() {
@@ -140,7 +169,21 @@ public class MainActivity extends AppCompatActivity {
                         "com.munoz.diego.projectem07.fileProvider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            }
+        }
+    }
+
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            try {
+                Bitmap mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse("file://" + currentPhotoPath));
+                ImageView mImageView = findViewById(R.id.iv_foto);
+                mImageView.setImageBitmap(mImageBitmap);
+            } catch (IOException e) {
+                Log.e("fotoSet", e.getMessage());
             }
         }
     }
@@ -155,7 +198,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void setPic() {
         ImageView imagen = findViewById(R.id.iv_foto);
-        Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath); //TODO: no va esto, revisar
+
+        Bitmap bitmap = null;
+
+        bitmap = BitmapFactory.decodeFile(currentPhotoPath);
+
         imagen.setImageBitmap(bitmap);
     }
 
