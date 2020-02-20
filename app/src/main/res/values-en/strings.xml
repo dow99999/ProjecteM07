@@ -39,11 +39,11 @@
     <string name="animal">Animal</string>
     <string name="no_lista">Not in the list:</string>
     <string name="no_nombre">I do not know the name</string>
+    <string name="cerrar_sesion">Logout</string>
     <string-array name="animales">
         <item>Wild boar</item>
         <item>Squirrel</item>
         <item>Raccon</item>
     </string-array>
     <string name="licencia">Licence Creative Commons BY-NC-SA</string>
-    <string name="cerrar_sesion">Logout</string>
 </resources>
