@@ -7,6 +7,7 @@
     <string name="contrase_a">Contrasenya</string>
     <string name="repetir_contrase_a">Repetir contrasenya</string>
     <string name="usuario">Usuari</string>
+    <string name="email_login">E-Mail</string>
     <string name="escribe_tu_nombre">Escriu el teu nom…</string>
     <string name="escribe_tu_usuario">Escriu el teu usuari…</string>
     <string name="escribe_tu_e_mail">Escriu el teu e-mail…</string>
@@ -48,5 +49,8 @@
         <item>Esquirol</item>
         <item>Ós rentador</item>
     </string-array>
+
+    <string name="web_dature"><a href="http://dature.cat/">Dature</a></string>
+
 
 </resources>

@@ -8,6 +8,7 @@
     <string name="contrase_a">Password</string>
     <string name="repetir_contrase_a">Repeat password</string>
     <string name="usuario">Username</string>
+    <string name="email_login">E-Mail</string>
     <string name="escribe_tu_nombre">Type your name…</string>
     <string name="escribe_tu_usuario">Type your username…</string>
     <string name="escribe_tu_e_mail">Type your e-mail…</string>
@@ -46,4 +47,7 @@
         <item>Raccon</item>
     </string-array>
     <string name="licencia">Licence Creative Commons BY-NC-SA</string>
+
+    <string name="web_dature"><a href="http://dature.cat/">Dature</a></string>
+
 </resources>

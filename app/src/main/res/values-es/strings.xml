@@ -8,6 +8,7 @@
     <string name="contrase_a">Contraseña</string>
     <string name="repetir_contrase_a">Repetir contraseña</string>
     <string name="usuario">Usuario</string>
+    <string name="email_login">E-Mail</string>
     <string name="escribe_tu_nombre">Escribe tu nombre…</string>
     <string name="escribe_tu_usuario">Escribe tu usuario…</string>
     <string name="escribe_tu_e_mail">Escribe tu e-mail…</string>
@@ -46,4 +47,7 @@
         <item>Mapache</item>
     </string-array>
     <string name="licencia">Licencia Creative Commons BY-NC-SA</string>
+
+    <string name="web_dature"><a href="http://dature.cat/">Dature</a></string>
+
 </resources>

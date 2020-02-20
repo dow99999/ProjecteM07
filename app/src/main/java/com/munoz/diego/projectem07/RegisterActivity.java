@@ -6,14 +6,17 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.munoz.diego.projectem07.modelo.Modelo;
@@ -37,6 +40,9 @@ public class RegisterActivity extends AppCompatActivity {
     private RadioButton m_mujer;
     private RadioButton m_otro;
 
+    private Button b_registrar;
+
+
     private final Modelo m_modelo = Modelo.getModelo();//
 
     @Override
@@ -55,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
         m_mujer = findViewById(R.id.rbmujer);
         m_otro = findViewById(R.id.rbotro);
 
+        b_registrar = findViewById(R.id.btn_Usuario);
+
     }
 
     public void showToast(String message) {
@@ -72,11 +80,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         //SharedPreferences user_info = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         //SharedPreferences.Editor editor = user_info.edit();
+        b_registrar.setEnabled(true);
 
-        if (!paswd1.equals(paswd2)) {
-            showToast("Las contraseñas no coinciden");
-        } else if (nombre.equals("") || usuario.equals("") || email.equals("") || paswd1.equals("")) {
+        if (nombre.equals("") || usuario.equals("") || email.equals("") || paswd1.equals("")) {
             showToast("Debes rellenar todos los campos.");
+        } else if(!paswd1.equals(paswd2)){
+            showToast("Las contraseñas no coinciden");
+        }else if (paswd1.length() <6) {
+            showToast("La contraseña ha de tener más de 6 caracteres.");
         } else {
             //editor.putString("nombre", nombre);
             //editor.putString("user", usuario);
@@ -85,19 +96,8 @@ public class RegisterActivity extends AppCompatActivity {
             //int checkedRadioButtonId = m_sexo.getCheckedRadioButtonId();
             //editor.putInt("checkedRadioButtonId", checkedRadioButtonId);
             //editor.apply();
-
             registerFirebase(email, paswd1);
-
             //finish();
-
-            if(m_modelo.getCurrentUser() != null){
-                UserProfileChangeRequest pr = new UserProfileChangeRequest.Builder().setDisplayName(nombre).build();
-
-                m_modelo.getCurrentUser().updateProfile(pr);
-
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
         }
     }
     
@@ -110,13 +110,17 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             m_modelo.reloadCurrentUser();
-
                             showToast("Usuario/a Creado");
+                            b_registrar.setEnabled(false);
+                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                            startActivity(intent);
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(RegisterActivity.this, "No se pudo crear el usuario",
                                     Toast.LENGTH_SHORT).show();
+                            b_registrar.setEnabled(true);
                         }
                     }
                 });

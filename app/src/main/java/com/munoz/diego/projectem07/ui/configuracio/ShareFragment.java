@@ -1,4 +1,4 @@
-package com.munoz.diego.projectem07.ui.share;
+package com.munoz.diego.projectem07.ui.configuracio;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,7 +22,7 @@ public class ShareFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         shareViewModel =
                 ViewModelProviders.of(this).get(ShareViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_share, container, false);
+        View root = inflater.inflate(R.layout.fragment_configuracio, container, false);
         final TextView textView = root.findViewById(R.id.text_share);
         shareViewModel.getText().observe(this, new Observer<String>() {
             @Override

@@ -19,25 +19,25 @@
 
     <fragment
         android:id="@+id/nav_map"
-        android:name="com.munoz.diego.projectem07.ui.slideshow.SlideshowFragment"
+        android:name="com.munoz.diego.projectem07.ui.mapa.SlideshowFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_mapa" />
 
     <fragment
         android:id="@+id/nav_edit_profile"
-        android:name="com.munoz.diego.projectem07.ui.tools.ToolsFragment"
+        android:name="com.munoz.diego.projectem07.ui.editar_perfil.ToolsFragment"
         android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_editar_perfil" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.munoz.diego.projectem07.ui.share.ShareFragment"
+        android:name="com.munoz.diego.projectem07.ui.configuracio.ShareFragment"
         android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        tools:layout="@layout/fragment_configuracio" />
 
     <fragment
         android:id="@+id/nav_about_us"
-        android:name="com.munoz.diego.projectem07.ui.send.SendFragment"
+        android:name="com.munoz.diego.projectem07.ui.about_us.SendFragment"
         android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_sobre_nosaltres" />
 </navigation>
