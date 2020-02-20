@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="@string/usuario"
+            android:text="@string/email_login"
             android:textAlignment="textStart" />
 
         <EditText
@@ -34,8 +34,8 @@
             android:layout_marginTop="12dp"
             android:background="@drawable/edt_login_register"
             android:ems="10"
-            android:hint="@string/escribe_tu_usuario"
-            android:inputType="textPersonName" />
+            android:hint="@string/escribe_tu_e_mail"
+            android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/tvPassword"

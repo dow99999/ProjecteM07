@@ -1,4 +1,4 @@
-package com.munoz.diego.projectem07.ui.share;
+package com.munoz.diego.projectem07.ui.configuracio;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

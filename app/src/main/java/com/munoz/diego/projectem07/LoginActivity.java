@@ -101,8 +101,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void handleLogin(View view) {
-        String user,
-                password;
+        String user, password;
 
         m_login.setEnabled(false);
         //SharedPreferences user_info = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
