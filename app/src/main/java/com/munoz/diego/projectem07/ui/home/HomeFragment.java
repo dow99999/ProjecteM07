@@ -50,22 +50,20 @@ public class HomeFragment extends Fragment {
         mRecyclerView = root.findViewById(R.id.rvPosts);
         mSwipeContainer = root.findViewById(R.id.swipeContainer);
 
-
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //public Post(String titulo, String desc, LocalDateTime fecha, Usuario u, String[] foto){
         m_postAdapter = new PostAdapter(getActivity(), m_posts);
-
         mRecyclerView.setAdapter(m_postAdapter);
+        mSwipeContainer.setRefreshing(true);
+
+        Post.getNPosts(5, m_postAdapter, mSwipeContainer);
+
 
         mSwipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                m_postAdapter.clear();
-                m_postAdapter.addAll(Post.getNPosts(5, mSwipeContainer));
-                Log.i("logcat", String.valueOf(m_postAdapter.getItemCount()));
-                m_postAdapter.notifyDataSetChanged();
-                Log.i("posts-: ", String.valueOf(m_postAdapter.getItemCount()));
+                Post.getNPosts(5, m_postAdapter, mSwipeContainer);
             }
         });
         Log.i("posts: ", String.valueOf(m_postAdapter.getItemCount()));

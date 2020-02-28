@@ -1,15 +1,19 @@
 package com.munoz.diego.projectem07.modelo;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PostProcessor;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.munoz.diego.projectem07.controlador.PostAdapter;
 
 import java.io.ByteArrayOutputStream;
 import java.time.LocalDateTime;
@@ -85,7 +89,7 @@ public class Post {
         return m_nextId;
     }
 
-    public static List<Post> getNPosts(final int i, final SwipeRefreshLayout swipe){
+    public static List<Post> getNPosts(final int i, final PostAdapter adaptador, final SwipeRefreshLayout swipe){
 
         DatabaseReference ref =
                 FirebaseDatabase.getInstance().getReference("posts");
@@ -96,6 +100,7 @@ public class Post {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 postList.clear();
+                adaptador.clear();
                 String id = null;
                 DataSnapshot aux;
 
@@ -108,16 +113,18 @@ public class Post {
                         String img_strb64 = aux.child("imageUrl").getValue(String.class);
 
                         postList.add(new Post(aux_id, titulo, descripcion, convertStringToBitmap(img_strb64)));
+                        adaptador.add(postList.get(postList.size() - 1));
                     }
                     aun_no = false;
 
+                    //adaptador.addAll(postList);
                     Log.i("postLoad", "la i. " + i);
                     swipe.setRefreshing(false);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                swipe.setRefreshing(false);
             }
         });
 

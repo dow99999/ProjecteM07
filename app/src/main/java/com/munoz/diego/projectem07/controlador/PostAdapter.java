@@ -43,6 +43,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         notifyDataSetChanged();
     }
 
+    public void add(Post post){
+        m_postData.add(post);
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public PostAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
