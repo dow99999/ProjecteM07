@@ -5,12 +5,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -26,8 +24,12 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.munoz.diego.projectem07.modelo.Modelo;
+import com.munoz.diego.projectem07.modelo.Post;
 import com.munoz.diego.projectem07.ui.Perfil;
+import com.munoz.diego.projectem07.ui.home.HomeFragment;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -36,13 +38,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,11 +57,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {//
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Post.initNextId();
+        HomeFragment.first_run = true;
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -179,44 +184,79 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             try {
-                Bitmap mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse("file://" + currentPhotoPath));
                 ImageView mImageView = findViewById(R.id.iv_foto);
-                mImageView.setImageBitmap(mImageBitmap);
+
+                Bitmap mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse("file://" + currentPhotoPath));
+
+                ExifInterface ei = new ExifInterface(currentPhotoPath);
+                int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED);
+
+                Bitmap rotatedBitmap;
+                switch(orientation) {
+
+                    case ExifInterface.ORIENTATION_ROTATE_90:
+                        rotatedBitmap = rotateImage(mImageBitmap, 90);
+                        break;
+
+                    case ExifInterface.ORIENTATION_ROTATE_180:
+                        rotatedBitmap = rotateImage(mImageBitmap, 180);
+                        break;
+
+                    case ExifInterface.ORIENTATION_ROTATE_270:
+                        rotatedBitmap = rotateImage(mImageBitmap, 270);
+                        break;
+
+                    case ExifInterface.ORIENTATION_NORMAL:
+                    default:
+                        rotatedBitmap = mImageBitmap;
+                }
+
+                savePost(
+                        rotatedBitmap,
+                        new Post()
+                            .setId(Post.getNextId())
+                            .setDescripcion("asdsd")
+                            .setTitulo("Titulo"));
+                mImageView.setImageBitmap(rotatedBitmap);
             } catch (IOException e) {
-                Log.e("fotoSet", e.getMessage());
+                Log.e("fotoSet", Objects.requireNonNull(e.getMessage()));
             }
         }
     }
 
-    private void galleryAddPic() {
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        File f = new File(currentPhotoPath);
-        Uri contentUri = Uri.fromFile(f);
-        mediaScanIntent.setData(contentUri);
-        this.sendBroadcast(mediaScanIntent);
-    }
-
-    private void setPic() {
-        ImageView imagen = findViewById(R.id.iv_foto);
-
-        Bitmap bitmap = null;
-
-        bitmap = BitmapFactory.decodeFile(currentPhotoPath);
-
-        imagen.setImageBitmap(bitmap);
-    }
-
-/*
-    public void encodeBitmapAndSaveToFirebase(Bitmap bitmap) {
+    public void savePost(Bitmap bitmap, Post p) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 33, baos);
         String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
-        DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference(Constants.FIREBASE_CHILD_RESTAURANTS)
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .child(mRestaurant.getPushId())
+
+        DatabaseReference ref;
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
+                .child("titulo");
+        ref.setValue(p.getTitulo());
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
+                .child("desc");
+        ref.setValue(p.getDescripcion());
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
                 .child("imageUrl");
         ref.setValue(imageEncoded);
-    }*/
+
+    }
+
+    public static Bitmap rotateImage(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
+                matrix, true);
+    }
 
 }
