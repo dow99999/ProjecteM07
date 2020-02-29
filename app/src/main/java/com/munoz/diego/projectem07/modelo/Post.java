@@ -132,7 +132,7 @@ public class Post {
     }
 
     public static void getNPostsSearch(final int i, final String search, final PostAdapter adaptador, final SwipeRefreshLayout swipe){
-
+        //TODO
         DatabaseReference ref =
                 FirebaseDatabase.getInstance().getReference("posts");
 

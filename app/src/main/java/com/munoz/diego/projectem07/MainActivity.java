@@ -267,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void savePost(Bitmap bitmap, Post p) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 33, baos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
         String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
 
         DatabaseReference ref;
