@@ -89,7 +89,49 @@ public class Post {
         return m_nextId;
     }
 
-    public static List<Post> getNPosts(final int i, final PostAdapter adaptador, final SwipeRefreshLayout swipe){
+    public static void getNPosts(final int i, final PostAdapter adaptador, final SwipeRefreshLayout swipe){
+
+        DatabaseReference ref =
+                FirebaseDatabase.getInstance().getReference("posts");
+
+        aun_no = true;
+
+        ref.orderByKey().limitToLast(i).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                postList.clear();
+                adaptador.clear();
+                String id = null;
+                DataSnapshot aux;
+
+                    for (Iterator<DataSnapshot> it = dataSnapshot.getChildren().iterator(); it.hasNext();){
+                        aux = it.next();
+                        long aux_id = Long.valueOf(aux.getKey());
+
+                        String titulo = aux.child("titulo").getValue(String.class);
+                        String descripcion = aux.child("desc").getValue(String.class);
+                        String img_strb64 = aux.child("imageUrl").getValue(String.class);
+
+                        postList.add(new Post(aux_id, titulo, descripcion, convertStringToBitmap(img_strb64)));
+                    }
+                    aun_no = false;
+
+                    for(int i = postList.size() - 1; i >= 0; --i )
+                        adaptador.add(postList.get(i));
+
+                    //adaptador.addAll(postList);
+                    Log.i("postLoad", "la i. " + i);
+                    swipe.setRefreshing(false);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                swipe.setRefreshing(false);
+            }
+        });
+    }
+
+    public static void getNPostsSearch(final int i, final String search, final PostAdapter adaptador, final SwipeRefreshLayout swipe){
 
         DatabaseReference ref =
                 FirebaseDatabase.getInstance().getReference("posts");
@@ -127,9 +169,6 @@ public class Post {
                 swipe.setRefreshing(false);
             }
         });
-
-
-        return postList;
     }
 
     public static Bitmap convertStringToBitmap(String b){
