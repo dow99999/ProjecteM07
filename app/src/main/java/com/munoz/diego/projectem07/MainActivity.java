@@ -2,27 +2,34 @@ package com.munoz.diego.projectem07;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.location.Location;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.transition.Slide;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -30,6 +37,7 @@ import com.munoz.diego.projectem07.modelo.Modelo;
 import com.munoz.diego.projectem07.modelo.Post;
 import com.munoz.diego.projectem07.ui.Perfil;
 import com.munoz.diego.projectem07.ui.home.HomeFragment;
+import com.munoz.diego.projectem07.ui.mapa.SlideshowFragment;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -51,8 +59,11 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     private final int APP_WRITE_EXTERNAL_STORAGE = 27;
+    private final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 277;
 
     private AppBarConfiguration mAppBarConfiguration;
+
+    private SlideshowFragment mMapa;
 
     private static final int REQUEST_IMAGE_CAPTURE = 111;
     static final int REQUEST_TAKE_PHOTO = 1;
@@ -77,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_edit_profile, R.id.nav_settings, R.id.nav_about_us)
                 .setDrawerLayout(drawer)
                 .build();
+
+        getApplicationContext();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
@@ -103,8 +116,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             // Permission has already been granted
         }
-
-
 
     }
 
@@ -265,7 +276,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressWarnings("ResourceType")
+    public void gpsLoc(Context context) {
+        android.location.LocationManager manager = (android.location.LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+        if (manager != null) {
+            for (String provider : manager.getAllProviders()) {
+                Location location = manager.getLastKnownLocation(provider);
+                if (location != null) {
+                    m_lat = location.getLatitude();
+                    m_lon = location.getLongitude();
+                }
+            }
+        }
+    }
+
+    private double m_lat;
+    private double m_lon;
+
     public void savePost(Bitmap bitmap, Post p) {
+        gpsLoc(getApplicationContext());
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
         String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
@@ -289,6 +318,20 @@ public class MainActivity extends AppCompatActivity {
                 .child(p.getIdAsString(p.getId()))
                 .child("imageUrl");
         ref.setValue(imageEncoded);
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
+                .child("lat");
+        ref.setValue(m_lat);
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
+                .child("lon");
+        ref.setValue(m_lon);
+
+
 
     }
 

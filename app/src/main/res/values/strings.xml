@@ -54,6 +54,7 @@
     <string name="hacer_foto">Fer Foto</string>
     <string name="post_titulo">Títol</string>
     <string name="guardar_post">Pujar Post</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>

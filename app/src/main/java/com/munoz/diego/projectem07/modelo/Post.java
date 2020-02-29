@@ -8,6 +8,10 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -89,6 +93,38 @@ public class Post {
         return m_nextId;
     }
 
+    public static void populateMap(final GoogleMap map){
+
+        DatabaseReference ref =
+                FirebaseDatabase.getInstance().getReference("posts");
+
+        ref.orderByKey().limitToLast(100).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                postList.clear();
+                DataSnapshot aux;
+
+                for (Iterator<DataSnapshot> it = dataSnapshot.getChildren().iterator(); it.hasNext();){
+                    aux = it.next();
+
+                    String titulo = aux.child("titulo").getValue(String.class);
+                    Double lat = aux.child("lat").getValue(Double.class);
+                    Double lon = aux.child("lon").getValue(Double.class);
+
+                    if(lat!=null && lon!= null){
+                        LatLng pos = new LatLng(lat, lon);
+                        map.addMarker(new MarkerOptions().position(pos).title(titulo).visible(true));
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
     public static void getNPosts(final int i, final PostAdapter adaptador, final SwipeRefreshLayout swipe){
 
         DatabaseReference ref =
@@ -104,16 +140,18 @@ public class Post {
                 String id = null;
                 DataSnapshot aux;
 
-                    for (Iterator<DataSnapshot> it = dataSnapshot.getChildren().iterator(); it.hasNext();){
-                        aux = it.next();
-                        long aux_id = Long.valueOf(aux.getKey());
+                for (Iterator<DataSnapshot> it = dataSnapshot.getChildren().iterator(); it.hasNext();){
+                    aux = it.next();
+                    long aux_id = Long.valueOf(aux.getKey());
 
-                        String titulo = aux.child("titulo").getValue(String.class);
-                        String descripcion = aux.child("desc").getValue(String.class);
-                        String img_strb64 = aux.child("imageUrl").getValue(String.class);
+                    String titulo = aux.child("titulo").getValue(String.class);
+                    String descripcion = aux.child("desc").getValue(String.class);
+                    String img_strb64 = aux.child("imageUrl").getValue(String.class);
+                    Double lat = aux.child("lat").getValue(Double.class);
+                    Double lon = aux.child("lon").getValue(Double.class);
 
-                        postList.add(new Post(aux_id, titulo, descripcion, convertStringToBitmap(img_strb64)));
-                    }
+                    postList.add(new Post(aux_id, titulo, descripcion, convertStringToBitmap(img_strb64), lat, lon));
+                }
                     aun_no = false;
 
                     for(int i = postList.size() - 1; i >= 0; --i )
@@ -153,8 +191,10 @@ public class Post {
                         String titulo = aux.child("titulo").getValue(String.class);
                         String descripcion = aux.child("desc").getValue(String.class);
                         String img_strb64 = aux.child("imageUrl").getValue(String.class);
+                        Double lat = aux.child("lat").getValue(Double.class);
+                        Double lon = aux.child("lon").getValue(Double.class);
 
-                        postList.add(new Post(aux_id, titulo, descripcion, convertStringToBitmap(img_strb64)));
+                        postList.add(new Post(aux_id, titulo, descripcion, convertStringToBitmap(img_strb64), lat, lon));
                         adaptador.add(postList.get(postList.size() - 1));
                     }
                     aun_no = false;
@@ -198,21 +238,28 @@ public class Post {
     private Usuario m_usuario;
     private Bitmap m_foto;
 
+    private Double m_lat;
+    private Double m_lon;
+
     public long getId(){ return m_id; }
     public String getTitulo(){ return m_titulo; }
     public String getDescripcion(){ return m_descripcion; }
     public Usuario getUsuario(){ return m_usuario; }
     public Bitmap getFotos(){ return m_foto; }
+    public Double getLat(){ return m_lat; }
+    public Double getLon(){ return m_lon; }
 
     public Post(){
 
     }
 
-    public Post(long id, String titulo, String desc, Bitmap foto){
+    public Post(long id, String titulo, String desc, Bitmap foto, Double lat, Double lon){
         m_id = id;
         m_titulo = titulo;
         m_descripcion = desc;
         m_foto = foto;
+        m_lon = lon;
+        m_lat = lat;
     }
 
     public Post setId(long id){ m_id = id; return this; }
