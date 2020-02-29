@@ -51,6 +51,9 @@
     </string-array>
 
     <string name="web_dature"><a href="http://dature.cat/">Visita la web de Dature</a></string>
+    <string name="hacer_foto">Fer Foto</string>
+    <string name="post_titulo">Títol</string>
+    <string name="guardar_post">Pujar Post</string>
 
 
 </resources>

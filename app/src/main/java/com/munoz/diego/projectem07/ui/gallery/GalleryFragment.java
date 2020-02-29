@@ -21,24 +21,11 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemSelec
 
     private GalleryViewModel galleryViewModel;
 
-    String[] m_animales;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-
-        m_animales = getResources().getStringArray(R.array.animales);
-
-        Spinner spin = root.findViewById(R.id.sp_animal);
-        spin.setOnItemSelectedListener(this);
-
-        ArrayAdapter aa = new ArrayAdapter(this.getContext(),android.R.layout.simple_spinner_item, m_animales);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spin.setAdapter(aa);
-
 
         return root;
     }

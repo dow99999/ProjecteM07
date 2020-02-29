@@ -37,7 +37,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -54,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 111;
     static final int REQUEST_TAKE_PHOTO = 1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,17 +213,56 @@ public class MainActivity extends AppCompatActivity {
                         rotatedBitmap = mImageBitmap;
                 }
 
-                savePost(
+                /*savePost(
                         rotatedBitmap,
                         new Post()
                             .setId(Post.getNextId())
                             .setDescripcion("asdsd")
                             .setTitulo("Titulo"));
+                */
+
+                m_currentFoto = rotatedBitmap;
+
                 mImageView.setImageBitmap(rotatedBitmap);
             } catch (IOException e) {
                 Log.e("fotoSet", Objects.requireNonNull(e.getMessage()));
             }
         }
+    }
+
+    private Bitmap m_currentFoto;
+
+    public void handleSubirPost(View view){
+        EditText m_new_post_animal = findViewById(R.id.et_new_post_animal);
+        EditText m_new_post_titulo = findViewById(R.id.et_new_post_titulo);
+        ImageView mImageView = findViewById(R.id.iv_foto);
+
+        if (m_currentFoto != null){
+            if(!m_new_post_titulo.getText().toString().equals("")){
+                if(!m_new_post_animal.getText().toString().equals("")) {
+                    savePost(
+                            m_currentFoto,
+                            new Post()
+                                    .setId(Post.getNextId())
+                                    .setDescripcion(m_new_post_animal.getText().toString())
+                                    .setTitulo(m_new_post_titulo.getText().toString()));
+
+                    m_new_post_animal.setText("");
+                    m_new_post_titulo.setText("");
+                    m_currentFoto = null;
+                    mImageView.setImageBitmap(null);
+
+                    Toast.makeText(getApplicationContext(), "S'ha pujat el post", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Has d'introduir un titol", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "Has d'introduir el nom de l'animal", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Puja primer una foto", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void savePost(Bitmap bitmap, Post p) {

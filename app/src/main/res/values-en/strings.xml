@@ -49,5 +49,8 @@
     <string name="licencia">Licence Creative Commons BY-NC-SA</string>
 
     <string name="web_dature"><a href="http://dature.cat/">Visit Dature web</a></string>
+    <string name="hacer_foto">Take Photo</string>
+    <string name="post_titulo">Title</string>
+    <string name="guardar_post">Upload Post</string>
 
 </resources>
