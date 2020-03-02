@@ -6,71 +6,55 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo_main">
 
-    <Spinner
-        android:id="@+id/sp_animal"
-        android:layout_width="165dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="108dp"
-        android:labelFor="@id/tv_animal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_animal"
-        app:layout_constraintTop_toTopOf="@+id/tv_animal" />
-
-    <TextView
-        android:id="@+id/tv_animal"
-        style="@style/Style_text_views2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="@string/animal"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07999998" />
-
     <EditText
-        android:id="@+id/et_nombre_otro"
+        android:id="@+id/et_new_post_animal"
         android:layout_width="165dp"
         android:layout_height="40dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:labelFor="@id/tv_noenlallista"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_noenlallista"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_noenlallista"
-        app:layout_constraintTop_toBottomOf="@+id/sp_animal" />
+        app:layout_constraintTop_toTopOf="@+id/tv_noenlallista" />
+
+    <EditText
+        android:id="@+id/et_new_post_titulo"
+        android:layout_width="165dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:labelFor="@id/tv_noenlallista"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.674"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/tv_noenlallista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/no_lista"
-        app:layout_constraintStart_toStartOf="@+id/tv_animal"
-        app:layout_constraintTop_toBottomOf="@+id/tv_animal" />
-
-    <Switch
-        android:id="@+id/sw_no_nombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/no_nombre"
-        app:layout_constraintStart_toStartOf="@+id/tv_noenlallista"
-        app:layout_constraintTop_toBottomOf="@+id/tv_noenlallista" />
+        android:layout_marginTop="48dp"
+        android:text="@string/animal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="165dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
         android:background="@color/paletaVerdes_light"
         android:onClick="handleHacerFoto"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/sw_no_nombre"
-        app:layout_constraintTop_toBottomOf="@+id/sw_no_nombre">
+        app:layout_constraintEnd_toEndOf="@+id/et_new_post_animal"
+        app:layout_constraintTop_toBottomOf="@+id/tv_noenlallista">
 
         <TextView
             android:id="@+id/textView"
@@ -78,7 +62,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="TextView" />
+            android:text="@string/hacer_foto" />
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -103,5 +87,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/post_titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/guardar_post"
+        android:onClick="handleSubirPost"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/iv_foto"
+        app:layout_constraintTop_toBottomOf="@+id/iv_foto" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,32 +2,42 @@ package com.munoz.diego.projectem07;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.location.Location;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.transition.Slide;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.munoz.diego.projectem07.modelo.Modelo;
+import com.munoz.diego.projectem07.modelo.Post;
 import com.munoz.diego.projectem07.ui.Perfil;
+import com.munoz.diego.projectem07.ui.home.HomeFragment;
+import com.munoz.diego.projectem07.ui.mapa.SlideshowFragment;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -35,31 +45,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private final int APP_WRITE_EXTERNAL_STORAGE = 27;
+    private final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 277;
 
     private AppBarConfiguration mAppBarConfiguration;
+
+    private SlideshowFragment mMapa;
 
     private static final int REQUEST_IMAGE_CAPTURE = 111;
     static final int REQUEST_TAKE_PHOTO = 1;
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {//
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Post.initNextId();
+        HomeFragment.first_run = true;
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -71,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_edit_profile, R.id.nav_settings, R.id.nav_about_us)
                 .setDrawerLayout(drawer)
                 .build();
+
+        getApplicationContext();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
@@ -97,8 +116,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             // Permission has already been granted
         }
-
-
 
     }
 
@@ -179,44 +196,150 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             try {
-                Bitmap mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse("file://" + currentPhotoPath));
                 ImageView mImageView = findViewById(R.id.iv_foto);
-                mImageView.setImageBitmap(mImageBitmap);
+
+                Bitmap mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse("file://" + currentPhotoPath));
+
+                ExifInterface ei = new ExifInterface(currentPhotoPath);
+                int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED);
+
+                Bitmap rotatedBitmap;
+                switch(orientation) {
+
+                    case ExifInterface.ORIENTATION_ROTATE_90:
+                        rotatedBitmap = rotateImage(mImageBitmap, 90);
+                        break;
+
+                    case ExifInterface.ORIENTATION_ROTATE_180:
+                        rotatedBitmap = rotateImage(mImageBitmap, 180);
+                        break;
+
+                    case ExifInterface.ORIENTATION_ROTATE_270:
+                        rotatedBitmap = rotateImage(mImageBitmap, 270);
+                        break;
+
+                    case ExifInterface.ORIENTATION_NORMAL:
+                    default:
+                        rotatedBitmap = mImageBitmap;
+                }
+
+                /*savePost(
+                        rotatedBitmap,
+                        new Post()
+                            .setId(Post.getNextId())
+                            .setDescripcion("asdsd")
+                            .setTitulo("Titulo"));
+                */
+
+                m_currentFoto = rotatedBitmap;
+
+                mImageView.setImageBitmap(rotatedBitmap);
             } catch (IOException e) {
-                Log.e("fotoSet", e.getMessage());
+                Log.e("fotoSet", Objects.requireNonNull(e.getMessage()));
             }
         }
     }
 
-    private void galleryAddPic() {
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        File f = new File(currentPhotoPath);
-        Uri contentUri = Uri.fromFile(f);
-        mediaScanIntent.setData(contentUri);
-        this.sendBroadcast(mediaScanIntent);
+    private Bitmap m_currentFoto;
+
+    public void handleSubirPost(View view){
+        EditText m_new_post_animal = findViewById(R.id.et_new_post_animal);
+        EditText m_new_post_titulo = findViewById(R.id.et_new_post_titulo);
+        ImageView mImageView = findViewById(R.id.iv_foto);
+
+        if (m_currentFoto != null){
+            if(!m_new_post_titulo.getText().toString().equals("")){
+                if(!m_new_post_animal.getText().toString().equals("")) {
+                    savePost(
+                            m_currentFoto,
+                            new Post()
+                                    .setId(Post.getNextId())
+                                    .setDescripcion(m_new_post_animal.getText().toString())
+                                    .setTitulo(m_new_post_titulo.getText().toString()));
+
+                    m_new_post_animal.setText("");
+                    m_new_post_titulo.setText("");
+                    m_currentFoto = null;
+                    mImageView.setImageBitmap(null);
+
+                    Toast.makeText(getApplicationContext(), "S'ha pujat el post", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Has d'introduir un titol", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "Has d'introduir el nom de l'animal", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Puja primer una foto", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
-    private void setPic() {
-        ImageView imagen = findViewById(R.id.iv_foto);
-
-        Bitmap bitmap = null;
-
-        bitmap = BitmapFactory.decodeFile(currentPhotoPath);
-
-        imagen.setImageBitmap(bitmap);
+    @SuppressWarnings("ResourceType")
+    public void gpsLoc(Context context) {
+        android.location.LocationManager manager = (android.location.LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+        if (manager != null) {
+            for (String provider : manager.getAllProviders()) {
+                Location location = manager.getLastKnownLocation(provider);
+                if (location != null) {
+                    m_lat = location.getLatitude();
+                    m_lon = location.getLongitude();
+                }
+            }
+        }
     }
 
-/*
-    public void encodeBitmapAndSaveToFirebase(Bitmap bitmap) {
+    private double m_lat;
+    private double m_lon;
+
+    public void savePost(Bitmap bitmap, Post p) {
+        gpsLoc(getApplicationContext());
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
         String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
-        DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference(Constants.FIREBASE_CHILD_RESTAURANTS)
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .child(mRestaurant.getPushId())
+
+        DatabaseReference ref;
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
+                .child("titulo");
+        ref.setValue(p.getTitulo());
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
+                .child("desc");
+        ref.setValue(p.getDescripcion());
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
                 .child("imageUrl");
         ref.setValue(imageEncoded);
-    }*/
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
+                .child("lat");
+        ref.setValue(m_lat);
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
+                .child("lon");
+        ref.setValue(m_lon);
+
+
+
+    }
+
+    public static Bitmap rotateImage(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
+                matrix, true);
+    }
 
 }

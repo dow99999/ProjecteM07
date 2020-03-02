@@ -18,18 +18,34 @@ import com.munoz.diego.projectem07.R;
 import com.munoz.diego.projectem07.modelo.Post;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
-    private ArrayList<Post> m_postData;
+    private List<Post> m_postData;
     private Context m_context;
 
-    public PostAdapter(Context context, ArrayList<Post> postData){
+    public PostAdapter(Context context, List<Post> postData){
         m_context = context;
         m_postData = postData;
+    }
+
+    public void clear() {
+        m_postData.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<Post> list) {
+        m_postData.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public void add(Post post){
+        m_postData.add(post);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -70,10 +86,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             mTitleText.setText(currentPost.getTitulo());
 
             Log.d("viewholder",currentPost.getTitulo());
-            Log.d("viewholder",currentPost.getFotos()[0]);
 
             // Load the images into the ImageView using the Glide library.
-            Glide.with(m_context).load(currentPost.getFotos()[0])
+            Glide.with(m_context).load(currentPost.getFotos())
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
