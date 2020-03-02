@@ -52,5 +52,7 @@
     <string name="hacer_foto">Hacer Foto</string>
     <string name="post_titulo">Título</string>
     <string name="guardar_post">Subir Post</string>
+    <string name="edt_anarRegistre">Aún no eres usuario? Registrate aquí.</string>
+    <string name="login_password">Contraseña</string>
 
 </resources>

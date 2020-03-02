@@ -56,5 +56,11 @@
     <string name="guardar_post">Pujar Post</string>
     <string name="title_activity_maps">Map</string>
 
+    <string name="login_email" translatable="false">E-Mail</string>
+    <string name="login_password">Contrasenya</string>
+
+    <string name="edt_anarRegistre">No ets un usuari? Registrat aquí.</string>
+    <string name="dature" translatable="false">Dature</string>
+
 
 </resources>

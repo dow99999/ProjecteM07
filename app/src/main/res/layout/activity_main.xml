@@ -21,7 +21,7 @@
         android:background="@drawable/fondo_nav_perfil"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:itemTextColor="@color/colorButons"
+        app:itemTextColor="@color/white"
         app:menu="@menu/activity_main_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
