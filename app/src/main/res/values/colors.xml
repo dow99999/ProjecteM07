@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/paletaVerdes_light</color>
-    <color name="colorPrimaryDark">@color/paletaVerdes_dark</color>
-    <color name="colorAccent">#009688</color>
+    <color name="colorPrimary">@color/background_color</color>
+    <color name="colorPrimaryDark">@color/white_greyish</color>
+    <color name="colorAccent">@color/white</color>
 
-    <color name="colorButons">@color/paletaVerdes_lightGreen</color>
+    <color name="colorButons">@color/white_greyish</color>
     <color name="colorEditTexts">@color/paletaVerdes_light</color>
 
-    <color name="colorFondoLogReg_Start">@color/paletaVerdes_darkGreen</color>
-    <color name="colorFondoLogReg_End">@color/paletaVerdes_dark</color>
+    <color name="colorFondoLogReg">@color/background_color</color>
 
-    <color name="colorMain_Start">@color/paletaVerdes_lightGreen</color>
-    <color name="colorMain_End">@color/paletaVerdes_darkGreen</color>
+    <color name="colorMain_Start">@color/paletaVerdes_dark</color>
+    <color name="colorMain_End">@color/paletaVerdes_verdeclaro</color>
 
-    <color name="colorNav_Start">@color/paletaVerdes_light</color>
-    <color name="colorNav_End">@color/paletaVerdes_lightdark</color>
+    <color name="colorNav">@color/paletaVerdes_lightdark</color>
 
-    <color name="colorLetraTextViews1">@color/paletaVerdes_light</color>
-    <color name="colorLetraTextViews2">@color/paletaVerdes_darkGreen</color>
+    <color name="colorLetraTextViews1">@color/white</color>
+    <color name="colorLetraTextViews2">@color/paletaVerdes_verdeclaro</color>
     <color name="colorLetraHint">@color/paletaVerdes_dark</color>
+
+
 
     <!-- Paleta de colores 2290: https://paletasdecolores.com/paleta-de-colores-2290/ -->
     <color name="paletaVerdes_dark">#35331A</color>
     <color name="paletaVerdes_lightdark">#666846</color>
     <color name="paletaVerdes_light">#DEE0C0</color>
-    <color name="paletaVerdes_lightGreen">#C8DF59</color>
-    <color name="paletaVerdes_darkGreen">#566F0C</color>
+    <color name="paletaVerdes_verdebotones">#dee1a6</color>
+    <color name="paletaVerdes_verdeclaro">#dee0c0</color>
+
+    <color name="background_color">#009688</color>
+    <color name="background_color_gradient">#02bdab</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white_greyish">#EEEED6</color>
+    <color name="button_selectorcolor">#9E9E9E</color>
+    <color name="transparent"></color>
 
 
 </resources>

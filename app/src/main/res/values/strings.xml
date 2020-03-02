@@ -15,6 +15,9 @@
     <string name="repite_tu_contrase_a">Repeteix la contrasenya…</string>
 
     <string name="login">Login</string>
+    <string name="login_email">E-Mail</string>
+    <string name="login_password">Contrasenya</string>
+
     <string name="registrarse">Registrar-se</string>
     <string name="catalan" translatable="false">idioma català</string>
     <string name="castellano" translatable="false">idioma castellano</string>
@@ -51,6 +54,7 @@
     </string-array>
 
     <string name="web_dature"><a href="http://dature.cat/">Visita la web de Dature</a></string>
+    <string name="edt_anarRegistre">No ets un usuari? Registrat aquí.</string>
 
 
 </resources>

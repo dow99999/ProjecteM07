@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_login_register"
+    android:background="@drawable/fondo_principal"
     android:scrollbarStyle="insideOverlay">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,6 +22,7 @@
             android:text="@string/nombre"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/etNombre"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,6 +36,7 @@
             android:text="@string/usuario"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/etUsuario"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_nom" />
 
@@ -48,6 +50,7 @@
             android:text="@string/e_mail"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/etEmail"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_usuari" />
 
@@ -61,7 +64,7 @@
             android:text="@string/contrase_a"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/etContrasena"
-            app:layout_constraintHorizontal_bias="0.458"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_email" />
 
@@ -75,7 +78,7 @@
             android:text="@string/repetir_contrase_a"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/etContrasena2"
-            app:layout_constraintHorizontal_bias="0.458"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_contrasena" />
 
@@ -84,36 +87,38 @@
             style="@style/Style_text_views"
             android:layout_width="120dp"
             android:layout_height="48dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="24dp"
             android:gravity="end"
             android:text="@string/sexo"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/rg_grupo_de_sexo_uwu"
-            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_repetir_contrasena" />
 
         <EditText
             android:id="@+id/etNombre"
             style="@style/Style_edit_text"
-            android:layout_width="wrap_content"
+            android:layout_width="208dp"
+            android:layout_height="48dp"
             android:layout_marginTop="28dp"
-            android:background="@drawable/edt_login_register"
+            android:background="@drawable/edt_register"
             android:ems="10"
             android:hint="@string/escribe_tu_nombre"
             android:inputType="textPersonName"
             android:labelFor="@id/tv_nom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.797"
+            app:layout_constraintHorizontal_bias="0.798"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/etUsuario"
             style="@style/Style_edit_text"
-            android:layout_width="wrap_content"
+            android:layout_width="208dp"
+            android:layout_height="48dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/edt_login_register"
+            android:background="@drawable/edt_register"
             android:ems="10"
             android:hint="@string/escribe_tu_usuario"
             android:inputType="textPersonName"
@@ -126,24 +131,24 @@
         <EditText
             android:id="@+id/etEmail"
             style="@style/Style_edit_text"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/edt_login_register"
+            android:layout_width="208dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/edt_register"
             android:ems="10"
             android:hint="@string/escribe_tu_e_mail"
             android:inputType="textEmailAddress"
             android:labelFor="@id/tv_email"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.797"
+            app:layout_constraintHorizontal_bias="0.798"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etUsuario" />
 
         <EditText
             android:id="@+id/etContrasena"
             style="@style/Style_edit_text"
-            android:layout_width="wrap_content"
+            android:layout_width="208dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/edt_login_register"
+            android:background="@drawable/edt_register"
             android:ems="10"
             android:hint="@string/escrtibe_tu_contrase_a"
             android:inputType="textPersonName|textPassword"
@@ -156,15 +161,15 @@
         <EditText
             android:id="@+id/etContrasena2"
             style="@style/Style_edit_text"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/edt_login_register"
+            android:layout_width="208dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/edt_register"
             android:ems="10"
             android:hint="@string/repite_tu_contrase_a"
             android:inputType="textPersonName|textPassword"
             android:labelFor="@id/tv_repetir_contrasena"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.797"
+            app:layout_constraintHorizontal_bias="0.798"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etContrasena" />
 
@@ -183,13 +188,13 @@
 
         <RadioGroup
             android:id="@+id/rg_grupo_de_sexo_uwu"
-            android:layout_width="175dp"
-            android:layout_height="144dp"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/edt_login_register"
+            android:layout_width="208dp"
+            android:layout_height="152dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/edt_login"
             android:labelFor="@id/tv_sexe"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.82"
+            app:layout_constraintHorizontal_bias="0.798"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etContrasena2">
 

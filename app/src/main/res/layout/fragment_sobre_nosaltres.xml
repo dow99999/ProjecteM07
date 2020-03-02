@@ -2,75 +2,68 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/about_us"
+    android:id="@+id/sc_aboutUs"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_main">
 
-    <ScrollView
-        android:id="@+id/sc_aboutUs"
-        android:layout_width="407dp"
-        android:layout_height="732dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linearlayout_aboutus"
+            android:layout_width="348dp"
+            android:layout_height="706dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <ImageView
+                android:id="@+id/img_droksid"
+                android:layout_width="208dp"
+                android:layout_height="159dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="false"
+                android:baselineAlignBottom="false"
+                android:clickable="false"
+                app:srcCompat="@drawable/logo_empresa" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="218dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut elementum mauris, vitae ornare est. Vestibulum tincidunt lorem tellus, vitae tempus lacus pulvinar eu. Cras et ipsum feugiat, eleifend lorem ac, lacinia neque. In luctus, metus non interdum vestibulum, mi est pellentesque libero, vitae vulputate libero nisi sit amet purus. Suspendisse non sapien id mauris tincidunt pellentesque at porta diam. Duis dignissim varius orci, a tempus ipsum. In placerat in ante vitae vehicula. Nunc hendrerit eget augue eget sodales. " />
 
             <LinearLayout
-                android:id="@+id/linearlayout_aboutus"
-                android:layout_width="387dp"
-                android:layout_height="727dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0">
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/img_droksid"
-                    android:layout_width="208dp"
-                    android:layout_height="159dp"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="false"
-                    android:baselineAlignBottom="false"
-                    android:clickable="false"
-                    app:srcCompat="@drawable/logo_empresa" />
+                    android:id="@+id/img_dature"
+                    android:layout_width="175dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/logo_dature" />
 
                 <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="218dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut elementum mauris, vitae ornare est. Vestibulum tincidunt lorem tellus, vitae tempus lacus pulvinar eu. Cras et ipsum feugiat, eleifend lorem ac, lacinia neque. In luctus, metus non interdum vestibulum, mi est pellentesque libero, vitae vulputate libero nisi sit amet purus. Suspendisse non sapien id mauris tincidunt pellentesque at porta diam. Duis dignissim varius orci, a tempus ipsum. In placerat in ante vitae vehicula. Nunc hendrerit eget augue eget sodales. " />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="210dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/img_dature"
-                        android:layout_width="178dp"
-                        android:layout_height="230dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/logo_dature" />
-
-                    <TextView
-                        android:id="@+id/tv_webDature"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="50"
-                        android:gravity="center"
-                        android:text="@string/web_dature" />
-                </LinearLayout>
-
+                    android:id="@+id/tv_webDature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="50"
+                    android:gravity="center"
+                    android:text="@string/web_dature" />
             </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.core.widget.NestedScrollView>
