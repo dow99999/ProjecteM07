@@ -28,7 +28,7 @@ public class SendFragment extends Fragment {
         sendViewModel = ViewModelProviders.of(this).get(SendViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_sobre_nosaltres, container, false);
-        final ScrollView scrollView = root.findViewById(R.id.sc_aboutUs);
+
         sendViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -36,9 +36,7 @@ public class SendFragment extends Fragment {
             }
         });
 
-        tv_web_dature = root.findViewById(R.id.tv_webDature);
-        tv_web_dature.setMovementMethod(LinkMovementMethod.getInstance());
-
+        
         return root;
     }
 }
