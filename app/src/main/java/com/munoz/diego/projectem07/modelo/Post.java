@@ -8,6 +8,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -24,6 +25,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import androidx.annotation.NonNull;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -42,6 +44,7 @@ public class Post {
         ref.orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                try{
 
                 String id = dataSnapshot.getChildren().iterator().next().getKey();
                 if( id != null) {
@@ -51,6 +54,9 @@ public class Post {
                 else {
                     m_nextId = 0;
                     Log.i("id", "null " + m_nextId);
+                }
+                }catch(NoSuchElementException e){
+                    m_nextId = 0;
                 }
             }
 
@@ -125,8 +131,11 @@ public class Post {
         });
     }
 
-    public static void getNPosts(final int i, final PostAdapter adaptador, final SwipeRefreshLayout swipe){
+    private final static String acaba = "";
+    private static boolean final_boolean;
 
+    public static void getNPosts(final int i, final PostAdapter adaptador, final SwipeRefreshLayout swipe){
+        final_boolean = false;
         DatabaseReference ref =
                 FirebaseDatabase.getInstance().getReference("posts");
 
@@ -142,24 +151,77 @@ public class Post {
 
                 for (Iterator<DataSnapshot> it = dataSnapshot.getChildren().iterator(); it.hasNext();){
                     aux = it.next();
-                    long aux_id = Long.valueOf(aux.getKey());
+                    final long aux_id = Long.valueOf(aux.getKey());
 
-                    String titulo = aux.child("titulo").getValue(String.class);
-                    String descripcion = aux.child("desc").getValue(String.class);
-                    String img_strb64 = aux.child("imageUrl").getValue(String.class);
-                    Double lat = aux.child("lat").getValue(Double.class);
-                    Double lon = aux.child("lon").getValue(Double.class);
+                    final String titulo = aux.child("titulo").getValue(String.class);
+                    final String descripcion = aux.child("desc").getValue(String.class);
+                    final Double lat = aux.child("lat").getValue(Double.class);
+                    final Double lon = aux.child("lon").getValue(Double.class);
 
-                    postList.add(new Post(aux_id, titulo, descripcion, convertStringToBitmap(img_strb64), lat, lon));
+                    synchronized (acaba){
+                        postList.add(new Post(aux_id, titulo, descripcion, null, lat, lon));
+                        acaba.notifyAll();
+                        Log.i("ll", "notifica normal");
+                    }
+
+
+                    DatabaseReference r = FirebaseDatabase.getInstance().getReference("imgs").child(getIdAsString(aux_id));
+                    r.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            synchronized (acaba){
+                                //adaptador.clear();
+
+                                Log.i("ll", dataSnapshot.getKey());
+
+                                DataSnapshot finalAux = dataSnapshot.getChildren().iterator().next();
+
+                                Log.i("ll", "key: " + finalAux.getKey());
+                                String img_strb64 = finalAux.getValue(String.class);
+                                Log.i("ll", "img: " + img_strb64);
+
+                                Log.i("ll", "foto");
+
+                                for(int j = 0; j < postList.size(); j++){
+                                    Post aaauuuxxx = postList.get(j);
+
+                                    if(getIdAsString(aaauuuxxx.getId()).equals(dataSnapshot.getKey()))
+                                        aaauuuxxx.setFotos(convertStringToBitmap(img_strb64));
+
+                                }
+
+                                for(int j = 0; j < postList.size(); j++){
+                                    if(postList.get(j).getFotos()==null){
+                                        break;
+                                    } else {
+                                        if(j == postList.size() - 1)
+                                            final_boolean = true;
+                                    }
+                                }
+                                //NICE SPAGHETTI CODE
+                                if(final_boolean){
+                                    List<Post> auxx = new ArrayList<>();
+                                    adaptador.clear();
+                                    for(int j = postList.size() - 1; j >= 0; j--){
+                                        auxx.add(postList.get(j));
+                                    }
+
+                                    adaptador.addAll(auxx);
+                                    acaba.notifyAll();
+                                    Log.i("ll", "notifica foto");
+                                    Log.i("postLoad", "la i. " + i);
+                                    swipe.setRefreshing(false);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+
                 }
-                    aun_no = false;
 
-                    for(int i = postList.size() - 1; i >= 0; --i )
-                        adaptador.add(postList.get(i));
-
-                    //adaptador.addAll(postList);
-                    Log.i("postLoad", "la i. " + i);
-                    swipe.setRefreshing(false);
             }
 
             @Override
@@ -167,6 +229,7 @@ public class Post {
                 swipe.setRefreshing(false);
             }
         });
+
     }
 
     public static void getNPostsSearch(final int i, final String search, final PostAdapter adaptador, final SwipeRefreshLayout swipe){

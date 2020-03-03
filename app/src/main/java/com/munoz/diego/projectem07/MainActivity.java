@@ -31,6 +31,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.munoz.diego.projectem07.modelo.Modelo;
@@ -314,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
         ref.setValue(p.getDescripcion());
 
         ref = FirebaseDatabase.getInstance()
-                .getReference("posts")
+                .getReference("imgs")
                 .child(p.getIdAsString(p.getId()))
                 .child("imageUrl");
         ref.setValue(imageEncoded);
@@ -330,6 +331,12 @@ public class MainActivity extends AppCompatActivity {
                 .child(p.getIdAsString(p.getId()))
                 .child("lon");
         ref.setValue(m_lon);
+
+        ref = FirebaseDatabase.getInstance()
+                .getReference("posts")
+                .child(p.getIdAsString(p.getId()))
+                .child("user");
+        ref.setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
 
 
