@@ -1,6 +1,8 @@
 package com.munoz.diego.projectem07.controlador;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,9 +16,12 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.munoz.diego.projectem07.MainActivity;
 import com.munoz.diego.projectem07.R;
 import com.munoz.diego.projectem07.modelo.Post;
+import com.munoz.diego.projectem07.ui.ElPost;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,7 +112,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
         @Override
         public void onClick(View view) {
-            //TODO: que ocurre si clicamos un post
+            int pos = getAdapterPosition();
+            Intent intent = new Intent(m_context, ElPost.class);
+            intent.putExtra("id", m_postData.get(pos).getId());
+
+            m_context.startActivity(intent);
         }
     }
 }
