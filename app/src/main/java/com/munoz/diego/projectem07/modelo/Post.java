@@ -119,7 +119,7 @@ public class Post {
 
                     if(lat!=null && lon!= null){
                         LatLng pos = new LatLng(lat, lon);
-                        map.addMarker(new MarkerOptions().position(pos).title(titulo).visible(true));
+                        map.addMarker(new MarkerOptions().position(pos).title(titulo).visible(true)).setSnippet(aux.getKey());
                     }
                 }
 

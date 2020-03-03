@@ -3,6 +3,7 @@ package com.munoz.diego.projectem07.ui.mapa;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,12 +25,13 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.munoz.diego.projectem07.R;
 import com.munoz.diego.projectem07.modelo.Post;
-
+import com.munoz.diego.projectem07.ui.ElPost;
 
 
 public class SlideshowFragment extends SupportMapFragment implements OnMapReadyCallback {
@@ -100,6 +102,17 @@ public class SlideshowFragment extends SupportMapFragment implements OnMapReadyC
         }
 
         Post.populateMap(mMap);
+
+        googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+
+                Intent intent = new Intent(mContext, ElPost.class);
+                intent.putExtra("id", Long.valueOf(marker.getSnippet()));
+
+                mContext.startActivity(intent);
+            }
+        });
     }
 /*
     private void getDeviceLocation() {
