@@ -8,8 +8,8 @@ android {
         applicationId "com.munoz.diego.projectem07"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "0.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
