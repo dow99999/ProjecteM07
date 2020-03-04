@@ -20,6 +20,7 @@ import com.munoz.diego.projectem07.R;
 import com.munoz.diego.projectem07.controlador.PostAdapter;
 import com.munoz.diego.projectem07.libs.ZoomableImageView;
 import com.munoz.diego.projectem07.modelo.Post;
+import com.munoz.diego.projectem07.modelo.Usuario;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,6 +31,7 @@ public class ElPost extends AppCompatActivity {
     ZoomableImageView iv_foto;
     TextView v_titulo;
     TextView v_animal;
+    TextView v_autor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +41,9 @@ public class ElPost extends AppCompatActivity {
         iv_foto = findViewById(R.id.iv_foto_ver_post);
         v_titulo = findViewById(R.id.tv_titulo_ver_post);
         v_animal = findViewById(R.id.tv_animal_ver_post);
+        v_autor = findViewById(R.id.tv_autor_ver_post);
 
         getPost(getIntent().getLongExtra("id", 0));
-
     }
 
     private final static String acaba = "";
@@ -59,34 +61,46 @@ public class ElPost extends AppCompatActivity {
 
                     final String titulo = dataSnapshot.child("titulo").getValue(String.class);
                     final String descripcion = dataSnapshot.child("desc").getValue(String.class);
+                    final String autor = dataSnapshot.child("user").getValue(String.class);
 
 
                     //final Double lat = aux.child("lat").getValue(Double.class);
                     //final Double lon = aux.child("lon").getValue(Double.class);
 
-                    synchronized (acaba){
-                        auxPost.setTitulo(titulo);
-                        auxPost.setId(i);
-                        auxPost.setDescripcion(descripcion);
-                        acaba.notifyAll();
-                    }
-
+                    auxPost.setTitulo(titulo);
+                    auxPost.setId(i);
+                    auxPost.setDescripcion(descripcion);
+                    auxPost.setUsuario(new Usuario(autor,"","",""));
 
                     DatabaseReference r = FirebaseDatabase.getInstance().getReference("imgs").child(Post.getIdAsString(i));
                     r.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            synchronized (acaba){
 
-                                DataSnapshot finalAux = dataSnapshot.getChildren().iterator().next();
-                                String img_strb64 = finalAux.getValue(String.class);
-                                auxPost.setFotos(Post.convertStringToBitmap(img_strb64));
+                            DataSnapshot finalAux = dataSnapshot.getChildren().iterator().next();
+                            String img_strb64 = finalAux.getValue(String.class);
+                            auxPost.setFotos(Post.convertStringToBitmap(img_strb64));
 
 
-                                iv_foto.setImageBitmap(auxPost.getFotos());
-                                v_titulo.setText(auxPost.getTitulo());
-                                v_animal.setText(auxPost.getDescripcion());
-                            }
+                            iv_foto.setImageBitmap(auxPost.getFotos());
+                            v_titulo.setText(auxPost.getTitulo());
+                            v_animal.setText(auxPost.getDescripcion());
+
+                            DatabaseReference rr = FirebaseDatabase.getInstance().getReference("users").child(auxPost.getUsuario().getNombre());
+                            rr.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                    DataSnapshot finalAux = dataSnapshot.child("usuario");
+                                    v_autor.setText(finalAux.getValue(String.class));
+                                    //Log.i("ye", auxPost.getTitulo()==null?"nulo":"meh");
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                }
+                            });
 
                             //Log.i("ye", auxPost.getTitulo()==null?"nulo":"meh");
 
@@ -96,7 +110,6 @@ public class ElPost extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
                     });
-
 
 
             }

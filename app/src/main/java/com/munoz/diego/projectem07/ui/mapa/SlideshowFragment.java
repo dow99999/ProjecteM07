@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -101,7 +102,9 @@ public class SlideshowFragment extends SupportMapFragment implements OnMapReadyC
             //mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
 
-        Post.populateMap(mMap);
+        SharedPreferences prefs = mContext.getSharedPreferences("com.munoz.diego.projectem07", Context.MODE_PRIVATE);
+        Post.populateMap(prefs.getInt("num_maps", 100), mMap);
+
 
         googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override

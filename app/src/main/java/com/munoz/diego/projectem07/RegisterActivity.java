@@ -79,6 +79,9 @@ public class RegisterActivity extends AppCompatActivity {
         String paswd1 = m_Contrasena.getText().toString();
         String paswd2 = m_Contrasena2.getText().toString();
 
+        RadioButton sexSelec = findViewById(m_sexo.getCheckedRadioButtonId());
+
+        String sexo = sexSelec.getText().toString();
 
         //SharedPreferences user_info = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         //SharedPreferences.Editor editor = user_info.edit();
@@ -98,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
             //int checkedRadioButtonId = m_sexo.getCheckedRadioButtonId();
             //editor.putInt("checkedRadioButtonId", checkedRadioButtonId);
             //editor.apply();
-            registerFirebase(nombre, usuario, email, "---", paswd1);
+            registerFirebase(nombre, usuario, email, sexo, paswd1);
 
             //finish();
         }

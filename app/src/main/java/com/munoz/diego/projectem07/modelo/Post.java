@@ -99,12 +99,12 @@ public class Post {
         return m_nextId;
     }
 
-    public static void populateMap(final GoogleMap map){
+    public static void populateMap(int markers, final GoogleMap map){
 
         DatabaseReference ref =
                 FirebaseDatabase.getInstance().getReference("posts");
 
-        ref.orderByKey().limitToLast(100).addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.orderByKey().limitToLast(markers).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 postList.clear();

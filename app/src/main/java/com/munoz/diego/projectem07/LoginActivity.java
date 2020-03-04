@@ -37,6 +37,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Modelo.initModelo();
         m_modelo  = Modelo.getModelo();
+        try {
+            Lingver.init(LoginActivity.this.getApplication(), "ca");
+        } catch (IllegalStateException e) {}
+
         if(m_modelo.getCurrentUser() != null){
             finish();
             //overridePendingTransition(R.anim.null_anim, R.anim.null_anim);
@@ -44,9 +48,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        try {
-            Lingver.init(LoginActivity.this.getApplication(), "ca");
-        } catch (IllegalStateException e) {}
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);

@@ -11,7 +11,7 @@
         android:id="@+id/tv_noenlallista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="16dp"
         android:text="@string/animal"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,23 +19,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <com.munoz.diego.projectem07.libs.ZoomableImageView
-        android:id="@+id/iv_foto_ver_post"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/background_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_animal_ver_post" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:text="@string/post_titulo"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,5 +53,38 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_titulo_ver_post"
         app:layout_constraintStart_toStartOf="@+id/tv_titulo_ver_post"
         app:layout_constraintTop_toTopOf="@+id/tv_noenlallista" />
+
+    <com.munoz.diego.projectem07.libs.ZoomableImageView
+        android:id="@+id/iv_foto_ver_post"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/background_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/autor"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/tv_noenlallista"
+        app:layout_constraintTop_toBottomOf="@+id/tv_noenlallista" />
+
+    <TextView
+        android:id="@+id/tv_autor_ver_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cargando"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="@+id/tv_animal_ver_post"
+        app:layout_constraintStart_toStartOf="@+id/tv_animal_ver_post"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

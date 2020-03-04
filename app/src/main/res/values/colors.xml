@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">@color/background_color</color>
     <color name="colorPrimaryDark">@color/background_color_dark</color>
-    <color name="colorAccent">@color/paletaVerdes_lightdark</color>
+    <color name="colorAccent">@color/background_color_light</color>
 
     <color name="colorButons">@color/white_greyish</color>
     <color name="colorEditTexts">@color/paletaVerdes_light</color>
@@ -28,6 +28,7 @@
     <color name="paletaVerdes_verdeclaro">#dee0c0</color>
 
     <color name="background_color_dark">#01574F</color>
+    <color name="background_color_light">#35FFE8</color>
     <color name="background_color">#009688</color>
     <color name="background_color_gradient">#02bdab</color>
     <color name="white">#FFFFFF</color>

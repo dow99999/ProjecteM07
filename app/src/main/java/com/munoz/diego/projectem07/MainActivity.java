@@ -14,7 +14,6 @@ import android.os.Bundle;
 
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.transition.Slide;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
@@ -22,18 +21,13 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -76,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 111;
     static final int REQUEST_TAKE_PHOTO = 1;
 
+    public static Usuario currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,12 +88,11 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_make_post, R.id.nav_map,
-                R.id.nav_edit_profile, R.id.nav_settings, R.id.nav_about_us)
+                R.id.nav_home, R.id.nav_make_post, R.id.nav_map, R.id.nav_settings, R.id.nav_about_us)
                 .setDrawerLayout(drawer)
                 .build();
 
-
+//,R.id.nav_edit_profile -> de momento este no
 
 
         View headerView = navigationView.getHeaderView(0);
@@ -112,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Usuario u = dataSnapshot.getValue(Usuario.class);
+                currentUser = u;
                 navUsername.setText(u.getUsuario());
                 navEmail.setText(u.getEmail());
             }

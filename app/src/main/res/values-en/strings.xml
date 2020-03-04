@@ -56,5 +56,8 @@
     <string name="desc_about_us">We are Arnau Muñoz and Diego Muñoz, two students coursing 2nd of DAM from the institute Nicolau Copernic, we like nature and programming</string>
     <string name="title_activity_maps">Map</string>
     <string name="cargando">loading...</string>
+    <string name="autor">Author</string>
+    <string name="config_num_mapa">Number of markers</string>
+    <string name="config_num_posts">Number of posts</string>
 
 </resources>

@@ -56,5 +56,8 @@
     <string name="desc_about_us">Somos Arnau Muñoz i Diego Muñoz, dos estudiantes de 2º de DAM del instituto Nicolau Copérnic a los que les gusta la naturaleza i la programación</string>
     <string name="title_activity_maps">Mapa</string>
     <string name="cargando">cargando...</string>
+    <string name="autor">Autor</string>
+    <string name="config_num_mapa">Número de marcadores</string>
+    <string name="config_num_posts">Número de posts</string>
 
 </resources>

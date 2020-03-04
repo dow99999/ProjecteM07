@@ -67,5 +67,21 @@
     <string name="droksid" translatable="false">Droksid</string>
 
     <string name="cargando">carregant...</string>
+    <string name="autor">Autor</string>
+
+    <string name="config_num_posts">Número de posts</string>
+    <string name="config_num_mapa">Número de marcadors</string>
+
+    <string-array name="config_choose_posts">
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+    </string-array>
+
+    <string-array name="config_choose_map">
+        <item>100</item>
+        <item>250</item>
+        <item>500</item>
+    </string-array>
 
 </resources>

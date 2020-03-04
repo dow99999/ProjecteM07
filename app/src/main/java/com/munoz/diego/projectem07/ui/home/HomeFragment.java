@@ -1,5 +1,7 @@
 package com.munoz.diego.projectem07.ui.home;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,6 +42,20 @@ public class HomeFragment extends Fragment {
 
     private SwipeRefreshLayout mSwipeContainer;
 
+    private Context mContext;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mContext = null;
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -57,13 +73,17 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setAdapter(m_postAdapter);
         mSwipeContainer.setRefreshing(true);
 
-        Post.getNPosts(5, m_postAdapter, mSwipeContainer);
+        SharedPreferences prefs = mContext.getSharedPreferences("com.munoz.diego.projectem07", Context.MODE_PRIVATE);
+
+        final int posts = prefs.getInt("num_posts", 5);
+
+        Post.getNPosts(posts, m_postAdapter, mSwipeContainer);
 
 
         mSwipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Post.getNPosts(5, m_postAdapter, mSwipeContainer);
+                Post.getNPosts(posts, m_postAdapter, mSwipeContainer);
             }
         });
         Log.i("posts: ", String.valueOf(m_postAdapter.getItemCount()));
