@@ -49,11 +49,11 @@ public class Post {
                 String id = dataSnapshot.getChildren().iterator().next().getKey();
                 if( id != null) {
                     m_nextId = Long.valueOf(id) + 1;
-                    Log.i("id", "no null " + m_nextId);
+                    //Log.i("id", "no null " + m_nextId);
                 }
                 else {
                     m_nextId = 0;
-                    Log.i("id", "null " + m_nextId);
+                    //Log.i("id", "null " + m_nextId);
                 }
                 }catch(NoSuchElementException e){
                     m_nextId = 0;
@@ -81,11 +81,11 @@ public class Post {
                     String id = dataSnapshot.getChildren().iterator().next().getKey();
                     if( id != null) {
                         m_nextId = Long.valueOf(id) + 1;
-                        Log.i("id", "no null " + m_nextId);
+                        //Log.i("id", "no null " + m_nextId);
                     }
                     else {
                         m_nextId = 0;
-                        Log.i("id", "null " + m_nextId);
+                        //Log.i("id", "null " + m_nextId);
                     }
                 }
 
@@ -233,7 +233,7 @@ public class Post {
     }
 
     public static void getNPostsSearch(final int i, final String search, final PostAdapter adaptador, final SwipeRefreshLayout swipe){
-        //TODO
+        //TODO ni caso de esto de momento
         DatabaseReference ref =
                 FirebaseDatabase.getInstance().getReference("posts");
 

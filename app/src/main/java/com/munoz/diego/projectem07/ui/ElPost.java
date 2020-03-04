@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.munoz.diego.projectem07.R;
 import com.munoz.diego.projectem07.controlador.PostAdapter;
+import com.munoz.diego.projectem07.libs.ZoomableImageView;
 import com.munoz.diego.projectem07.modelo.Post;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class ElPost extends AppCompatActivity {
 
-    ImageView iv_foto;
+    ZoomableImageView iv_foto;
     TextView v_titulo;
     TextView v_animal;
 
@@ -51,7 +52,7 @@ public class ElPost extends AppCompatActivity {
         final_boolean = false;
         DatabaseReference ref =
                 FirebaseDatabase.getInstance().getReference("posts").child(Post.getIdAsString(i));
-        Log.i("ye", "id: " + Post.getIdAsString(i));
+        //Log.i("ye", "id: " + Post.getIdAsString(i));
         ref.addListenerForSingleValueEvent(new ValueEventListener() {//TODO
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -87,7 +88,7 @@ public class ElPost extends AppCompatActivity {
                                 v_animal.setText(auxPost.getDescripcion());
                             }
 
-                            Log.i("ye", auxPost.getTitulo()==null?"nulo":"meh");
+                            //Log.i("ye", auxPost.getTitulo()==null?"nulo":"meh");
 
                         }
 

@@ -25,7 +25,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Main screen</string>
+    <string name="menu_home">Last Posts</string>
     <string name="menu_gallery">Upload / Take photo</string>
     <string name="menu_slideshow">Map</string>
     <string name="menu_tools">Edit profile</string>
@@ -48,11 +48,13 @@
     </string-array>
     <string name="licencia">Licence Creative Commons BY-NC-SA</string>
 
-    <string name="web_dature"><a href="http://dature.cat/">Visit Dature web</a></string>
     <string name="hacer_foto">Take Photo</string>
     <string name="post_titulo">Title</string>
     <string name="guardar_post">Upload Post</string>
     <string name="edt_anarRegistre">Not a member yet? Sign up here.</string>
     <string name="login_password">Password</string>
+    <string name="desc_about_us">We are Arnau Muñoz and Diego Muñoz, two students coursing 2nd of DAM from the institute Nicolau Copernic, we like nature and programming</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="cargando">loading...</string>
 
 </resources>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">@color/background_color</color>
-    <color name="colorPrimaryDark">@color/white_greyish</color>
-    <color name="colorAccent">@color/white</color>
+    <color name="colorPrimaryDark">@color/background_color_dark</color>
+    <color name="colorAccent">@color/paletaVerdes_lightdark</color>
 
     <color name="colorButons">@color/white_greyish</color>
     <color name="colorEditTexts">@color/paletaVerdes_light</color>
 
     <color name="colorFondoLogReg">@color/background_color</color>
 
-    <color name="colorMain_Start">@color/paletaVerdes_dark</color>
-    <color name="colorMain_End">@color/paletaVerdes_verdeclaro</color>
+    <color name="colorMain_Start">@color/background_color_dark</color>
+    <color name="colorMain_End">@color/background_color</color>
 
     <color name="colorNav">@color/paletaVerdes_lightdark</color>
 
@@ -27,6 +27,7 @@
     <color name="paletaVerdes_verdebotones">#dee1a6</color>
     <color name="paletaVerdes_verdeclaro">#dee0c0</color>
 
+    <color name="background_color_dark">#01574F</color>
     <color name="background_color">#009688</color>
     <color name="background_color_gradient">#02bdab</color>
     <color name="white">#FFFFFF</color>

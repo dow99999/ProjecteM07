@@ -25,7 +25,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Pantalla principal</string>
+    <string name="menu_home">Últimos Posts</string>
     <string name="menu_gallery">Subir / Hacer foto</string>
     <string name="menu_slideshow">Mapa</string>
     <string name="menu_tools">Editar Perfil</string>
@@ -48,11 +48,13 @@
     </string-array>
     <string name="licencia">Licencia Creative Commons BY-NC-SA</string>
 
-    <string name="web_dature"><a href="http://dature.cat/">Visita la web de Dature</a></string>
     <string name="hacer_foto">Hacer Foto</string>
     <string name="post_titulo">Título</string>
     <string name="guardar_post">Subir Post</string>
     <string name="edt_anarRegistre">Aún no eres usuario? Registrate aquí.</string>
     <string name="login_password">Contraseña</string>
+    <string name="desc_about_us">Somos Arnau Muñoz i Diego Muñoz, dos estudiantes de 2º de DAM del instituto Nicolau Copérnic a los que les gusta la naturaleza i la programación</string>
+    <string name="title_activity_maps">Mapa</string>
+    <string name="cargando">cargando...</string>
 
 </resources>

@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -32,10 +33,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.munoz.diego.projectem07.modelo.Modelo;
 import com.munoz.diego.projectem07.modelo.Post;
+import com.munoz.diego.projectem07.modelo.Usuario;
 import com.munoz.diego.projectem07.ui.Perfil;
 import com.munoz.diego.projectem07.ui.home.HomeFragment;
 import com.munoz.diego.projectem07.ui.mapa.SlideshowFragment;
@@ -48,6 +54,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -89,6 +96,31 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_edit_profile, R.id.nav_settings, R.id.nav_about_us)
                 .setDrawerLayout(drawer)
                 .build();
+
+
+
+
+        View headerView = navigationView.getHeaderView(0);
+        final TextView navUsername = headerView.findViewById(R.id.nav_username);
+        final TextView navEmail = headerView.findViewById(R.id.nav_email);
+
+        DatabaseReference ref;
+
+        ref = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Usuario u = dataSnapshot.getValue(Usuario.class);
+                navUsername.setText(u.getUsuario());
+                navEmail.setText(u.getEmail());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         getApplicationContext();
 

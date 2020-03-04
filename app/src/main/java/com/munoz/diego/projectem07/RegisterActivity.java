@@ -19,6 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.munoz.diego.projectem07.modelo.Modelo;
 import com.munoz.diego.projectem07.modelo.Usuario;
 
@@ -96,12 +98,13 @@ public class RegisterActivity extends AppCompatActivity {
             //int checkedRadioButtonId = m_sexo.getCheckedRadioButtonId();
             //editor.putInt("checkedRadioButtonId", checkedRadioButtonId);
             //editor.apply();
-            registerFirebase(email, paswd1);
+            registerFirebase(nombre, usuario, email, "---", paswd1);
+
             //finish();
         }
     }
     
-    public void registerFirebase(String email, String password) {
+    public void registerFirebase(final String nombre, final String usuario, final String email, final String sexo, String password) {
         m_modelo.getFirebaseAuth().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -112,6 +115,13 @@ public class RegisterActivity extends AppCompatActivity {
                             m_modelo.reloadCurrentUser();
                             showToast("Usuario/a Creado");
                             b_registrar.setEnabled(false);
+
+                            DatabaseReference ref;
+
+                            ref = FirebaseDatabase.getInstance().getReference("users").
+                                    child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            ref.setValue(new Usuario(nombre, usuario, email, sexo));
+
                             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(intent);
 

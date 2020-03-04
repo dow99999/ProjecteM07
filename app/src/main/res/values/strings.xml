@@ -28,7 +28,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Pantalla principal</string>
+    <string name="menu_home">Últims Posts</string>
     <string name="menu_gallery">Penjar / Fer foto</string>
     <string name="menu_slideshow">Mapa</string>
     <string name="menu_tools">Editar Perfil</string>
@@ -44,17 +44,18 @@
     <string name="no_lista">No esta en la llista:</string>
     <string name="no_nombre">No se el nom</string>
     <string name="cerrar_sesion">Tancar sessió</string>
+    <!-- DEPRECATED -->
     <string-array name="animales">
         <item>Porc Senglar</item>
         <item>Esquirol</item>
         <item>Ós rentador</item>
     </string-array>
+    <!-- - -->
 
-    <string name="web_dature"><a href="http://dature.cat/">Visita la web de Dature</a></string>
     <string name="hacer_foto">Fer Foto</string>
     <string name="post_titulo">Títol</string>
     <string name="guardar_post">Pujar Post</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">Mapa</string>
 
     <string name="login_email" translatable="false">E-Mail</string>
     <string name="login_password">Contrasenya</string>
@@ -62,5 +63,9 @@
     <string name="edt_anarRegistre">No ets un usuari? Registrat aquí.</string>
     <string name="dature" translatable="false">Dature</string>
 
+    <string name="desc_about_us">Som Arnau Muñoz i Diego Muñoz, dos estudiants de 2n de DAM de l\'institut Nicolau Copèrnic als que els hi hagrada la natura i la programació</string>
+    <string name="droksid" translatable="false">Droksid</string>
+
+    <string name="cargando">carregant...</string>
 
 </resources>
