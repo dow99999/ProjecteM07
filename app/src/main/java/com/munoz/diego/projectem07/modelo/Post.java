@@ -232,6 +232,13 @@ public class Post {
 
     }
 
+    public static void cachePosts(final PostAdapter pa, final SwipeRefreshLayout swipe){
+        for(int j = postList.size() - 1; j >= 0; j--){
+            pa.add(postList.get(j));
+        }
+        swipe.setRefreshing(false);
+    }
+
     public static void getNPostsSearch(final int i, final String search, final PostAdapter adaptador, final SwipeRefreshLayout swipe){
         //TODO ni caso de esto de momento
         DatabaseReference ref =

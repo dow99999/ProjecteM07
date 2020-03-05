@@ -18,10 +18,10 @@
         app:layout_constraintVertical_bias="0.10">
 
         <TextView
-            android:id="@+id/tv_num_mapa"
+            android:id="@+id/tv_num_posts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/config_num_mapa"
+            android:text="@string/config_num_posts"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -36,14 +36,15 @@
                 android:layout_width="150dp"
                 android:layout_height="48dp"
                 android:backgroundTint="@color/black" />
+
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_num_posts"
+            android:id="@+id/tv_num_mapa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/config_num_posts"
+            android:text="@string/config_num_mapa"
             android:textColor="@color/white"
             android:textSize="18sp" />
 

@@ -33,8 +33,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private Modelo m_modelo;
 
+    public static boolean first_run;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        first_run = true;
         Modelo.initModelo();
         m_modelo  = Modelo.getModelo();
         try {
@@ -58,9 +61,9 @@ public class LoginActivity extends AppCompatActivity {
         m_user = findViewById(R.id.etUser);
         m_pass = findViewById(R.id.etPassword);
 
-        ImageButton catalan = findViewById(R.id.ib_catalan);
-        ImageButton castellano = findViewById(R.id.ib_castellano);
-        ImageButton ingles = findViewById(R.id.ib_ingles);
+        Button catalan = findViewById(R.id.ib_catalan);
+        Button castellano = findViewById(R.id.ib_castellano);
+        Button ingles = findViewById(R.id.ib_ingles);
 
         catalan.setOnClickListener(new View.OnClickListener() {
             @Override

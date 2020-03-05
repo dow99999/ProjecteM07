@@ -20,6 +20,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.FirebaseDatabase;
+import com.munoz.diego.projectem07.LoginActivity;
 import com.munoz.diego.projectem07.R;
 import com.munoz.diego.projectem07.controlador.PostAdapter;
 import com.munoz.diego.projectem07.modelo.Modelo;
@@ -77,7 +78,12 @@ public class HomeFragment extends Fragment {
 
         final int posts = prefs.getInt("num_posts", 5);
 
-        Post.getNPosts(posts, m_postAdapter, mSwipeContainer);
+        if(LoginActivity.first_run){
+            Post.getNPosts(posts, m_postAdapter, mSwipeContainer);
+            LoginActivity.first_run = false;
+        } else {
+            Post.cachePosts(m_postAdapter, mSwipeContainer);
+        }
 
 
         mSwipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
