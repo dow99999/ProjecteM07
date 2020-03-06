@@ -9,8 +9,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="296dp"
-        android:layout_height="239dp"
+        android:layout_width="283dp"
+        android:layout_height="302dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,8 +81,9 @@
             android:id="@+id/tv_registrar"
             style="@style/Style_text_view_register"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:onClick="handleRegister"
             android:text="@string/edt_anarRegistre"
             android:textAlignment="center"
@@ -101,28 +102,28 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.951">
+        app:layout_constraintVertical_bias="0.933">
 
         <Button
             android:id="@+id/ib_catalan"
             style="@style/Style_image_button"
+            android:background="@drawable/catalan"
             android:contentDescription="@string/catalan"
-            android:scaleType="centerCrop"
-            android:background="@drawable/catalan" />
+            android:scaleType="centerCrop" />
 
         <Button
             android:id="@+id/ib_castellano"
             style="@style/Style_image_button"
+            android:background="@drawable/castellano"
             android:contentDescription="@string/castellano"
-            android:scaleType="centerCrop"
-            android:background="@drawable/castellano" />
+            android:scaleType="centerCrop" />
 
         <Button
             android:id="@+id/ib_ingles"
             style="@style/Style_image_button"
+            android:background="@drawable/ingles"
             android:contentDescription="@string/ingles"
-            android:scaleType="centerCrop"
-            android:background="@drawable/ingles" />
+            android:scaleType="centerCrop" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
