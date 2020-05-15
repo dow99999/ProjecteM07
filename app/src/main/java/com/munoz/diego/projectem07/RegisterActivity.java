@@ -116,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             m_modelo.reloadCurrentUser();
-                            showToast("Usuario/a Creado");
+                            showToast("Usuari/a Creat");
                             b_registrar.setEnabled(false);
 
                             DatabaseReference ref;
